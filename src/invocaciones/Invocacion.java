@@ -23,6 +23,7 @@ public abstract class Invocacion {
 
     public Invocacion(int id, int nivel, String raza, String rareza) {
 
+        calcularMultiplicadores(raza);
         calcularStats(rareza);
         this.id = id;
         this.nivel = nivel;
@@ -31,12 +32,12 @@ public abstract class Invocacion {
     }
 
     private void asignarStats(double vida, double ataque, double defensa, double probCritico, double dañoCritico) {
-        this.vida = vida;
-        this.vidaMaxima = vida;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.probCritico = probCritico;
-        this.dañoCritico = dañoCritico;
+        this.vida = vida * this.multiVida;
+        this.vidaMaxima = vida +  this.multiVida;
+        this.ataque = ataque * this.multiAtaque;
+        this.defensa = defensa * this.multiDefensa;
+        this.probCritico = probCritico * this.multiProbCritico;
+        this.dañoCritico = dañoCritico * this.multiDañoCritico;
     }
 
     public void asignarMultiplicadores(double multiVida, double multiAtaque, double multiDefensa,
@@ -77,7 +78,13 @@ public abstract class Invocacion {
                 asignarMultiplicadores(0.8, 2.8, 0.8, 1.5, 1);
                 break;
             case "Felino":
-                asignarMultiplicadores(1, 3, 1, 1.75, 1);
+                asignarMultiplicadores(1, 2, 1, 1.75, 1);
+                break;
+            case "Insectoide":
+                asignarMultiplicadores(2.2, 2.4, 2.2, 1, 1);
+                break;
+            case "Acuatico":
+                asignarMultiplicadores(1.5, 1, 1.7, 1.5, 1);
         }
     }
 
