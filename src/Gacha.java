@@ -1,15 +1,10 @@
 import invocaciones.Ave;
+import invocaciones.Invocacion;
 
 import java.util.Random;
 
 public class Gacha {
     Random random = new Random();
-
-
-
-
-
-
 
     private String determinarRareza(int suerte) {
         Random random = new Random();
@@ -49,8 +44,7 @@ public class Gacha {
 
         return raza;
     }
-
-
+    
 
 
 }
