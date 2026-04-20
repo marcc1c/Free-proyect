@@ -34,7 +34,8 @@ public class Principal {
 
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
-        frame.setSize(screen.width / 2, screen.height / 2);
-        frame.setLocation(screen.width / 4, screen.height / 4);
+        frame.setSize(1000, 700);
+        frame.setLocationRelativeTo(null);
+
     }
 }

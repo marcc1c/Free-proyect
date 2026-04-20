@@ -5,16 +5,9 @@ public abstract class Invocacion {
     protected int id, nivel;
     protected int ascension = 0;
     protected double experiencia = 0;
-    protected double probCritico = 10;
-    protected double dañoCritico = 1.5;
 
-    protected double vida = 20;
-    protected double vidaMaxima = 20;
-    protected double ataque = 5;
-    protected double defensa = 0;
-
-
-    protected double multiVida, multiAtaque, multiDefensa, multiProbCritico, multiDañoCritico, multiExteriencia;
+    protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
+            multiProbCritico, multiDañoCritico, multiExteriencia;
     protected String raza, rareza;
     protected boolean equipado;
 
@@ -33,7 +26,7 @@ public abstract class Invocacion {
 
     private void asignarStats(double vida, double ataque, double defensa, double probCritico, double dañoCritico) {
         this.vida = vida * this.multiVida;
-        this.vidaMaxima = vida +  this.multiVida;
+        this.vidaMaxima = vida * this.multiVida;
         this.ataque = ataque * this.multiAtaque;
         this.defensa = defensa * this.multiDefensa;
         this.probCritico = probCritico * this.multiProbCritico;
@@ -53,6 +46,9 @@ public abstract class Invocacion {
     public void calcularStats(String rareza) {
 
         switch (rareza) {
+            case "Común":
+                asignarStats(20, 5, 0, 10, 1.5);
+                break;
             case "Natural":
                 asignarStats(30, 7, 1, 11, 1.5);
                 break;
@@ -80,7 +76,7 @@ public abstract class Invocacion {
             case "Felino":
                 asignarMultiplicadores(1, 2, 1, 1.75, 1);
                 break;
-            case "Insectoide":
+            case "Insecto":
                 asignarMultiplicadores(2.2, 2.4, 2.2, 1, 1);
                 break;
             case "Acuatico":

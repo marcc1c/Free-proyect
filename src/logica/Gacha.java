@@ -1,5 +1,5 @@
-import invocaciones.Ave;
-import invocaciones.Invocacion;
+package logica;
+import invocaciones.*;
 
 import java.util.Random;
 
@@ -36,17 +36,37 @@ public class Gacha {
             raza = "Ave";
         } else if (numAleatorio <= 50) {
             raza = "Felino";
-        } else if  (numAleatorio <= 75) {
+        } else if (numAleatorio <= 75) {
             raza = "Acuatico";
         } else if (numAleatorio <= 100) {
-            raza = "Insectoide";
+            raza = "Insecto";
         }
-
         return raza;
     }
-    
 
+    public Invocacion crearInvocacion(int suerte) {
+        Invocacion invocacion = null;
 
+        switch (determinarRaza()) {
+            case "Ave":
+                invocacion = new Ave(0, 1, determinarRaza(), determinarRareza(suerte));
+                break;
+
+            case "Felino":
+                invocacion = new Felino(0, 1, determinarRaza(), determinarRareza(suerte));
+                break;
+
+            case "Acuatico":
+                invocacion = new Acuatico(0, 1, determinarRaza(), determinarRareza(suerte));
+                break;
+
+            case "Insecto":
+                invocacion = new Insecto(0, 1, determinarRaza(), determinarRareza(suerte));
+                break;
+        }
+        return invocacion;
+
+    }
 }
 
 
