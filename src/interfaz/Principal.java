@@ -4,10 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 public class Principal {
 
-    private JPanel panelMain;
+    JPanel panelMain;
     private JButton botonNuevaPartida;
     private JButton cargarPartida;
     private JButton botonAjustes;

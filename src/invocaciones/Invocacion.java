@@ -1,10 +1,14 @@
 package invocaciones;
 
+import java.math.MathContext;
+
 public abstract class Invocacion {
 
     protected int id, nivel;
     protected int ascension = 0;
     protected double experiencia = 0;
+    protected double experienciaMaxima = 10;
+
 
     protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
             multiProbCritico, multiDañoCritico, multiExteriencia;
@@ -84,6 +88,78 @@ public abstract class Invocacion {
         }
     }
 
+    public boolean subirExperiencia(Invocacion enemigo) {
+        boolean subido = false;
+
+            this.experiencia += enemigo.multiExteriencia;
+
+            if (this.experiencia >= this.experienciaMaxima) {
+                this.experiencia -= this.experienciaMaxima;
+                this.nivel++;
+                this.experienciaMaxima = Math.round(10 * Math.pow(this.nivel, 1.15));
+                subido = true;
+
+                double incProb;
+                int incFuerza;
+                int incVida;
+
+                switch (this.rareza) {
+
+                    case "Común":
+                        this.ataque = (this.ataque / this.multiAtaque) + 1;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 4;
+                        this.defensa = (this.defensa / this.multiDefensa) + 0.6;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.5;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.05;
+                        break;
+
+                    case "Natural":
+                        this.ataque = (this.ataque / this.multiAtaque) + 1;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 5;
+                        this.defensa = (this.defensa / this.multiDefensa) + 0.85;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.6;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.08;
+                        break;
+
+                    case "Raro":
+                        this.ataque = (this.ataque / this.multiAtaque) + 2;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 7;
+                        this.defensa = (this.defensa / this.multiDefensa) + 1;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.7;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
+                        break;
+
+                    case "Único":
+                        this.ataque = (this.ataque / this.multiAtaque) + 4;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 9;
+                        this.defensa = (this.defensa / this.multiDefensa) + 1.5;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.8;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
+                        break;
+
+                    case "Extinto":
+                        this.ataque = (this.ataque / this.multiAtaque) + 4;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 12;
+                        this.defensa = (this.defensa / this.multiDefensa) + 2;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.9;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.12;
+                        break;
+
+                    case "Primordial":
+                        this.ataque = (this.ataque / this.multiAtaque) + 5;
+                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 15;
+                        this.defensa = (this.defensa / this.multiDefensa) + 2.2;
+                        this.probCritico = (this.probCritico / this.multiProbCritico) + 1;
+                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.15;
+                        break;
+                }
+                        asignarStats(this.vidaMaxima, this.ataque, this.defensa, this.probCritico, this.dañoCritico);
+                }
+
+            return subido;
+        }
+
+
     @Override
     public String toString() {
         return "Invocacion{" +
@@ -107,6 +183,14 @@ public abstract class Invocacion {
                 ", rareza='" + rareza + '\'' +
                 ", equipado=" + equipado +
                 '}';
+    }
+
+    public double getExperienciaMaxima() {
+        return experienciaMaxima;
+    }
+
+    public void setExperienciaMaxima(double experienciaMaxima) {
+        this.experienciaMaxima = experienciaMaxima;
     }
 
     public boolean isEquipado() {
@@ -261,24 +345,3 @@ public abstract class Invocacion {
         this.id = id;
     }
 }
-
-
-/**
- * switch (pet.raza) {
- * case "Acuatico"   -> setMultis(pet, 1.0, 1.7, 1.5, 1.5);
- * case "Ave"        -> setMultis(pet, 2.8, 0.8, 0.8, 1.5);
- * case "Reptil"     -> setMultis(pet, 1.1, 3.0, 2.2, 0.8);
- * case "Felino"     -> setMultis(pet, 3.0, 1.0, 1.0, 1.75);
- * case "Canido"     -> setMultis(pet, 2.0, 2.2, 2.0, 1.1);
- * case "Humanoide"  -> setMultis(pet, 1.0, 1.6, 1.6, 1.0);
- * case "Insectoide" -> setMultis(pet, 2.4, 2.2, 2.2, 1.2);
- * case "Bestia"     -> setMultis(pet, 2.6, 1.5, 1.8, 1.2);
- * case "Serpiente"  -> setMultis(pet, 2.2, 1.0, 1.5, 1.5);
- * case "Abisal"     -> setMultis(pet, 1.1, 2.6, 3.0, 0.7);
- * case "Espectral"  -> setMultis(pet, 3.2, 0.5, 0.7, 2.0);
- * case "Colosal"    -> setMultis(pet, 1.6, 3.2, 3.2, 0.6);
- * case "Dragon"     -> setMultis(pet, 3.0, 2.1, 1.8, 1.3);
- * case "Amalgama"   -> setMultis(pet, 2.4, 2.4, 2.4, 1.4);
- * default           -> setMultis(pet, 1.0, 1.0, 1.0, 1.0);
- * }
- */
