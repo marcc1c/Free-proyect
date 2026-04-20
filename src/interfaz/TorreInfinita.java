@@ -17,7 +17,7 @@ public class TorreInfinita {
     private boolean turnoJugador = true;
     private boolean combateTerminado = false;
 
-    public TorreInfinita() {
+    public TorreInfinita(Main main) {
         this.main = main;
 
         for (Invocacion inv : main.inventario) {
@@ -244,14 +244,14 @@ public class TorreInfinita {
 
     private void volver() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelTorreInfinita);
-        frame.setContentPane(new MenuInicial().panelMenuInicial);
+        frame.setContentPane(new MenuInicial(main).panelMenuInicial);
         frame.revalidate();
         frame.repaint();
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("TorreInfinita");
-        frame.setContentPane(new TorreInfinita().panelTorreInfinita);
+        frame.setContentPane(new TorreInfinita(new Main()).panelTorreInfinita);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 700);
         frame.setLocationRelativeTo(null);

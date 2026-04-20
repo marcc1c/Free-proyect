@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class MenuInicial {
 
     private Gacha gacha = new Gacha();
-    private Main main = new Main();
+    private Main main;
 
     private JButton botonInvocar;
     private JButton botonInventario;
@@ -25,7 +25,8 @@ public class MenuInicial {
     private JPanel ventanaInventario;
     private JTextArea textAreaInventario;
 
-    public MenuInicial() {
+    public MenuInicial(Main main) {
+        this.main = main;
         scrollInventario.setMinimumSize(new Dimension(200, 0));
         scrollInventario.setPreferredSize(new Dimension(200, 0));
         scrollInventario.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -67,7 +68,7 @@ public class MenuInicial {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelMenuInicial);
-                frame.setContentPane(new CampoBatalla().panelBatallaInicial);
+                frame.setContentPane(new CampoBatalla(main).panelBatallaInicial);
                 frame.revalidate();
                 frame.repaint();
             }
@@ -256,7 +257,7 @@ public class MenuInicial {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MenuInicial");
-        frame.setContentPane(new MenuInicial().panelMenuInicial);
+        frame.setContentPane(new MenuInicial(new Main()).panelMenuInicial);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

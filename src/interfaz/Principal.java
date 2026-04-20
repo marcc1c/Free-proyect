@@ -1,4 +1,5 @@
 package interfaz;
+import logica.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +8,7 @@ import java.awt.event.ActionListener;
 public class Principal {
 
     JPanel panelMain;
+    private Main mainInstance = new Main();
     private JButton botonNuevaPartida;
     private JButton cargarPartida;
     private JButton botonAjustes;
@@ -17,7 +19,7 @@ public class Principal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelMain);
-                frame.setContentPane(new MenuInicial().panelMenuInicial);
+                frame.setContentPane(new MenuInicial(mainInstance).panelMenuInicial);
                 frame.revalidate();
                 frame.repaint();
             }
