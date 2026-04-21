@@ -76,7 +76,7 @@ public class MenuInicial {
     }
 
     public void invocar() {
-        Invocacion nuevaInvocacion = gacha.crearInvocacion(1);
+        Invocacion nuevaInvocacion = gacha.crearInvocacion(20, 1);
         System.out.println(nuevaInvocacion);
         main.inventario.add(nuevaInvocacion);
     }

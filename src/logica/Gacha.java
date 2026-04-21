@@ -44,24 +44,24 @@ public class Gacha {
         return raza;
     }
 
-    public Invocacion crearInvocacion(int suerte) {
+    public Invocacion crearInvocacion(int suerte, int nivel) {
         Invocacion invocacion = null;
 
         switch (determinarRaza()) {
             case "Ave":
-                invocacion = new Ave(0, 1, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Ave(0, nivel, determinarRaza(), determinarRareza(suerte));
                 break;
 
             case "Felino":
-                invocacion = new Felino(0, 1, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Felino(0, nivel, determinarRaza(), determinarRareza(suerte));
                 break;
 
             case "Acuatico":
-                invocacion = new Acuatico(0, 1, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Acuatico(0, nivel, determinarRaza(), determinarRareza(suerte));
                 break;
 
             case "Insecto":
-                invocacion = new Insecto(0, 1, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Insecto(0, nivel, determinarRaza(), determinarRareza(suerte));
                 break;
         }
         return invocacion;
