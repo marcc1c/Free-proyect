@@ -76,7 +76,7 @@ public class MenuInicial {
     }
 
     public void invocar() {
-        Invocacion nuevaInvocacion = gacha.crearInvocacion(20, 1);
+        Invocacion nuevaInvocacion = gacha.crearInvocacion(5, 1);
         System.out.println(nuevaInvocacion);
         main.inventario.add(nuevaInvocacion);
     }
@@ -90,7 +90,7 @@ public class MenuInicial {
             JPanel tarjeta = new JPanel();
             tarjeta.setPreferredSize(new Dimension(Integer.MAX_VALUE, 280));
             tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 280));
-            tarjeta.setBackground(new Color(30, 30, 45));
+            tarjeta.setBackground(new Color(0, 30, 45));
             tarjeta.setBorder(BorderFactory.createCompoundBorder(
                     BorderFactory.createLineBorder(new Color(80, 80, 120), 1),
                     BorderFactory.createEmptyBorder(10, 14, 10, 14)

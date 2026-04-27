@@ -3,17 +3,17 @@ package invocaciones;
 import java.math.MathContext;
 
 public abstract class Invocacion {
+    
+        protected int id, nivel;
+        protected int ascension = 0;
+        protected double experiencia = 0;
+        protected double experienciaMaxima = 10;
 
-    protected int id, nivel;
-    protected int ascension = 0;
-    protected double experiencia = 0;
-    protected double experienciaMaxima = 10;
 
-
-    protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
-            multiProbCritico, multiDañoCritico, multiExteriencia;
-    protected String raza, rareza;
-    protected boolean equipado;
+        protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
+                multiProbCritico, multiDañoCritico, multiExteriencia;
+        protected String raza, rareza;
+        protected boolean equipado;
 
     public Invocacion() {
     }
