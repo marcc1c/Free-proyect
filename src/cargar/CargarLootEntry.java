@@ -16,7 +16,7 @@ public class CargarLootEntry {
     public Map<String, List<LootEntry>> CargarLootEntry() {
         Map<String, List<LootEntry>> lootPorCalidad = new HashMap<>();
 
-        String select = "SELECT calidad_enemigo, id_objeto, porcentaje, cantidad_minima, cantidad_maxima FROM LOOT_CALIDAD";
+        String select = "SELECT calidad_enemigo, id_item, porcentaje, cantidad_minima, cantidad_maxima FROM LOOT_CALIDAD";
 
         try {
             Connection conexion = ConexionBD.conectar();

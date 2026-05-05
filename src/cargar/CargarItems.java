@@ -10,10 +10,13 @@ import java.util.ArrayList;
 
 public class CargarItems {
 
-    public ArrayList<Items> cargarItems() {
+    public ArrayList<Items> cargarItemsUsuario(int idUsuario) {
         ArrayList<Items> items = new ArrayList<>();
 
-        String select = "SELECT id, nombre, descripcion, rareza FROM OBJETO";
+        String select = "SELECT i.id, i.nombre, i.descripcion, i.rareza, " +
+                "COALESCE(iu.cantidad, 0) AS cantidad " +
+                "FROM ITEM i " +
+                "LEFT JOIN ITEM_USUARIO iu ON i.id = iu.id_item AND iu.id_usuario = " + idUsuario;
 
         try {
             Connection conexion = ConexionBD.conectar();
@@ -25,8 +28,9 @@ public class CargarItems {
                 String nombre = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 String rareza = rs.getString("rareza");
+                int cantidad = rs.getInt("cantidad");
 
-                Items item = new Items(nombre, descripcion, rareza, 0, id);
+                Items item = new Items(nombre, descripcion, rareza, cantidad, id);
 
                 items.add(item);
             }

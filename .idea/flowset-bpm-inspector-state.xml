@@ -3,12 +3,77 @@
   <component name="bpmstudio-bpm-inspector-state">
     <option name="statesByFile">
       <map>
+        <entry key="$PROJECT_DIR$/src/interfaz/CampoBatalla.form">
+          <value>
+            <FileInspectorState>
+              <option name="statesByElementId">
+                <map>
+                  <entry key="Form_19crrmc">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                  <entry key="Form_1fdmubd">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </FileInspectorState>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/interfaz/MenuInicial.form">
           <value>
             <FileInspectorState>
               <option name="statesByElementId">
                 <map>
+                  <entry key="Form_0avqcrb">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
                   <entry key="Form_1i70kgz">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </FileInspectorState>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/interfaz/Principal.form">
+          <value>
+            <FileInspectorState>
+              <option name="statesByElementId">
+                <map>
+                  <entry key="Form_1pzq91b">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                  <entry key="Form_1x1drkn">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </FileInspectorState>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/interfaz/TorreInfinita.form">
+          <value>
+            <FileInspectorState>
+              <option name="statesByElementId">
+                <map>
+                  <entry key="Form_11jlqve">
+                    <value>
+                      <ExpandedItems />
+                    </value>
+                  </entry>
+                  <entry key="Form_1tlgfzy">
                     <value>
                       <ExpandedItems />
                     </value>

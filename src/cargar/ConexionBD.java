@@ -8,7 +8,7 @@ public class ConexionBD {
 
     private static String url = "jdbc:mysql://localhost:3306/bbdd_call_the_best";
     private static String usuario = "root";
-    private static String password = "";
+    private static String password = "mysql";
 
     public static Connection conectar() {
         Connection conexion = null;

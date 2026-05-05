@@ -53,4 +53,15 @@ public class Items {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    @Override
+    public String toString() {
+        return "Items{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", rareza='" + rareza + '\'' +
+                ", id=" + id +
+                ", cantidad=" + cantidad +
+                '}';
+    }
 }
