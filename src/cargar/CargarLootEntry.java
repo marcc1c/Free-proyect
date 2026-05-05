@@ -1,8 +1,11 @@
 package cargar;
-import cargar.ConexionBD;
+
 import items.LootEntry;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,18 +13,10 @@ import java.util.Map;
 
 public class CargarLootEntry {
 
-    public Map<String, List<LootEntry>> cargarLootPorCalidad() {
+    public Map<String, List<LootEntry>> CargarLootEntry() {
         Map<String, List<LootEntry>> lootPorCalidad = new HashMap<>();
 
-        String select = """
-                SELECT 
-                    calidad_enemigo,
-                    id_objeto,
-                    porcentaje,
-                    cantidad_minima,
-                    cantidad_maxima
-                FROM LOOT_CALIDAD
-                """;
+        String select = "SELECT calidad_enemigo, id_objeto, porcentaje, cantidad_minima, cantidad_maxima FROM LOOT_CALIDAD";
 
         try {
             Connection conexion = ConexionBD.conectar();
@@ -45,10 +40,12 @@ public class CargarLootEntry {
             }
 
             rs.close();
+            st.close();
             conexion.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());        }
+            System.out.println(e.getMessage());
+        }
 
         return lootPorCalidad;
     }

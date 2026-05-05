@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c745c856-e57a-4691-8a4f-ca700de0df8c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/items/Items.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/items/LootEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logica/Loot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cargar/CargarItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Loot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Loot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,7 @@
       <workItem from="1777274919108" duration="2018000" />
       <workItem from="1777284481618" duration="42000" />
       <workItem from="1777284663703" duration="2878000" />
-      <workItem from="1777972849545" duration="4375000" />
+      <workItem from="1777972849545" duration="6628000" />
     </task>
     <servers />
   </component>
