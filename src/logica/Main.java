@@ -1,7 +1,6 @@
 package logica;
 
-import cargar.CargarItems;
-import cargar.CargarLootEntry;
+import cargar.ConexionBD;
 import invocaciones.Invocacion;
 import items.Items;
 import items.LootEntry;
@@ -18,11 +17,10 @@ public class Main {
     public static int idUsuario = 1;
 
     public static void main(String[] args) {
-        CargarLootEntry cargarLootEntry = new CargarLootEntry();
-        lootPorCalidad = cargarLootEntry.CargarLootEntry();
+        ConexionBD conexionBD = new ConexionBD();
+        conexionBD.cargarItemsUsuario(1);
+        conexionBD.cargarPoolObjetosDrop();
 
-        CargarItems cargarItems = new CargarItems();
-        catalogoItems = cargarItems.cargarItemsUsuario(1);
 
         for (Items a: catalogoItems) {
             System.out.println(a);

@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c745c856-e57a-4691-8a4f-ca700de0df8c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/flowset-bpm-inspector-state.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flowset-bpm-inspector-state.xml" afterDir="false" />
+    <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Free-proyect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Free-proyect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cargar/CargarItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/CargarItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/resources/52195598-5ce3-4555-8b7d-8cac82a83c8b.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/resources/5b62aa5d-e00d-4e97-baa9-86e2fa6699ec.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cargar/CargarItems.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/LootEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/LootEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Loot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Loot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,45 +22,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;marcc1c&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/marcc1c/Free-proyect.git&quot;,
-    &quot;accountId&quot;: &quot;4fe416dc-5b9e-4922-9eb9-c53bff0e69f9&quot;
-  }
-}</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="3CfAQ5w79ICFNhBsvRycyDSeiM0" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="3DO8Hwud22RB3VqllbdaTF6dXIz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -71,72 +38,55 @@
     "Application.Main.executor": "Run",
     "Application.MenuInicial.executor": "Run",
     "Application.Principal.executor": "Run",
-    "Application.TorreInfinita.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/CEP-MATI/Documents/GitHub/Free-proyect",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c745c856-e57a-4691-8a4f-ca700de0df8c" name="Changes" comment="" />
-      <created>1776766233777</created>
+      <changelist id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="" />
+      <created>1778141672631</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1776766233777</updated>
-      <workItem from="1776766236444" duration="4605000" />
-      <workItem from="1776840757740" duration="8631000" />
-      <workItem from="1777015281592" duration="6131000" />
-      <workItem from="1777273023738" duration="4000" />
-      <workItem from="1777274919108" duration="2018000" />
-      <workItem from="1777284481618" duration="42000" />
-      <workItem from="1777284663703" duration="2878000" />
-      <workItem from="1777912918850" duration="21000" />
+      <updated>1778141672631</updated>
+      <workItem from="1778141673880" duration="443000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
