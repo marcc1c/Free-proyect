@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfaz.Inventario">
+  <grid id="27dc6" binding="panelInventario" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-13138213"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="7d1a" class="javax.swing.JButton" binding="buttonVolver">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-16112328"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <font name="Vollkorn" size="18" style="1"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Volver"/>
+        </properties>
+      </component>
+      <grid id="4967f" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-13138213"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="3bbc6" class="javax.swing.JLabel">
+            <constraints border-constraint="North"/>
+            <properties>
+              <font name="Rakkas" size="48" style="1"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <text value="Inventario"/>
+            </properties>
+          </component>
+          <grid id="66f38" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="South"/>
+            <properties>
+              <background color="-13138213"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="cf937" class="javax.swing.JButton">
+                <constraints/>
+                <properties>
+                  <background color="-16112328"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <focusable value="false"/>
+                  <font name="Vollkorn" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Invocaciones"/>
+                </properties>
+              </component>
+              <component id="dc974" class="javax.swing.JButton">
+                <constraints/>
+                <properties>
+                  <background color="-16112328"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <focusable value="false"/>
+                  <font name="Vollkorn" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Objetos"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <scrollpane id="c9988" binding="scrollPaneInventario">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-13138213"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="2afbd" binding="panelGrid" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints/>
+            <properties>
+              <background color="-13138213"/>
+            </properties>
+            <clientProperties>
+              <html.disable class="java.lang.Boolean" value="false"/>
+            </clientProperties>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

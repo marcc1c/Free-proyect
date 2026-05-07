@@ -154,7 +154,7 @@ public class ConexionBD {
         return existe;
     }
 
-    public boolean registraUsuario(String nombreUsuario, char[] contrasenaArray) {
+    public void registraUsuario(String nombreUsuario, char[] contrasenaArray) {
 
         String contrasena = new String(contrasenaArray);
 
@@ -183,8 +183,6 @@ public class ConexionBD {
                 System.out.println(e.getMessage());
             }
         }
-
-        return seHaRegistrado;
     }
 
     public void cargarInvocaciones() {

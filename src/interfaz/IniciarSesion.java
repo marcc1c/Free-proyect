@@ -30,11 +30,11 @@ public class IniciarSesion {
 
                 Main.idUsuario = conexionBD.iniciarSesion(textField1.getText(), passwordField1.getPassword());
                 if (Main.idUsuario == -1) {
-                        labelAviso.setText("El usuario o contraseña incorrecta");
+                    labelAviso.setText("Usuario o contraseña incorrecta");
                     } else {
                     Main.inicializarJuego();
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelIniciarSesion);
-                    frame.setContentPane(new Principal().panelMain);
+                    frame.setContentPane(new GameMenu().panelGameMenu);
                     frame.revalidate();
                     frame.repaint();
                 }
