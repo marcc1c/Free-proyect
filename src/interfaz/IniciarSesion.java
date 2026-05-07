@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class iniciarSesion {
-    private JPanel panelIniciarSesion;
-    private JButton crearCuentaButton;
+public class IniciarSesion {
+    public JPanel panelIniciarSesion;
+    private JButton buttonCrearCuenta;
     private JPasswordField passwordField1;
     private JTextField textField1;
     private JButton buttonIniciarSesion;
@@ -16,13 +16,13 @@ public class iniciarSesion {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("iniciarSesion");
-        frame.setContentPane(new iniciarSesion().panelIniciarSesion);
+        frame.setContentPane(new IniciarSesion().panelIniciarSesion);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public iniciarSesion() {
+    public IniciarSesion() {
         buttonIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,6 +38,16 @@ public class iniciarSesion {
                     frame.revalidate();
                     frame.repaint();
                 }
+            }
+        });
+
+        buttonCrearCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelIniciarSesion);
+                frame.setContentPane(new Registrar().panelRegistrar);
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

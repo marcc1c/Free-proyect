@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/interfaz/iniciarSesion.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaz/iniciarSesion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/Registrar.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/Registrar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/iniciarSesion.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/IniciarSesion.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/iniciarSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/IniciarSesion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;elmagra&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/marcc1c/Free-proyect.git&quot;,
+    &quot;accountId&quot;: &quot;4fe416dc-5b9e-4922-9eb9-c53bff0e69f9&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -39,15 +52,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.IniciarSesion.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MenuInicial.executor": "Run",
     "Application.Principal.executor": "Run",
+    "Application.Registrar.executor": "Run",
     "Application.iniciarSesion.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/CEP-MATI/Documents/GitHub/Free-proyect",
@@ -74,13 +90,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="" />
@@ -89,6 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778141672631</updated>
       <workItem from="1778141673880" duration="443000" />
+      <workItem from="1778174512053" duration="5000" />
     </task>
     <servers />
   </component>

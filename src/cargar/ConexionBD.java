@@ -154,9 +154,12 @@ public class ConexionBD {
         return existe;
     }
 
-    public boolean registraUsuario(String nombreUsuario, String contrasena) {
+    public boolean registraUsuario(String nombreUsuario, char[] contrasenaArray) {
+
+        String contrasena = new String(contrasenaArray);
 
         boolean seHaRegistrado = false;
+
 
         if (!existeUsuario(nombreUsuario)) {
 
