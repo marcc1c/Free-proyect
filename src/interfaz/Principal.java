@@ -28,7 +28,6 @@ public class Principal {
     }
 
     public static void main(String[] args) {
-        Main.inicializarJuego();
         JFrame frame = new JFrame("Principal");
         frame.setContentPane(new Principal().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

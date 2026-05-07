@@ -99,9 +99,11 @@ public class ConexionBD {
         }
     }
 
-    public int iniciarSesion(String nombreUsuario, String contrasena) {
+    public int iniciarSesion(String nombreUsuario, char[] contrasenaArray) {
 
         int idUsuario = -1;
+
+        String contrasena = new String(contrasenaArray);
 
         String select = "SELECT id FROM USUARIO WHERE nombre = '" + nombreUsuario +
                 "' AND contrasena_hash = '" + contrasena + "'";

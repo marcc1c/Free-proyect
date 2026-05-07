@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/interfaz/iniciarSesion.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/iniciarSesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Free-proyect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Free-proyect.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/MenuInicial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/MenuInicial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/Principal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuInicial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuInicial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Acuatico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Acuatico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Ave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Ave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Felino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Felino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Insecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Insecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,6 +30,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="3DO8Hwud22RB3VqllbdaTF6dXIz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,6 +42,7 @@
     "Application.Main.executor": "Run",
     "Application.MenuInicial.executor": "Run",
     "Application.Principal.executor": "Run",
+    "Application.iniciarSesion.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -92,5 +94,28 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
