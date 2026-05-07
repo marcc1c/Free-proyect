@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/resources/52195598-5ce3-4555-8b7d-8cac82a83c8b.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/resources/5b62aa5d-e00d-4e97-baa9-86e2fa6699ec.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cargar/CargarItems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cargar/CargarLootEntry.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

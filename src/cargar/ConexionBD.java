@@ -153,27 +153,31 @@ public class ConexionBD {
         return existe;
     }
 
-    public boolean registraUsuario (String nombreUsuario, String contrasena) {
+    public boolean registraUsuario(String nombreUsuario, String contrasena) {
 
         boolean seHaRegistrado = false;
 
         if (!existeUsuario(nombreUsuario)) {
 
-            String insert = "INSERT INTO USUARIO (nombre, contrasena_hash) VALUES ('" + nombreUsuario  + "', '"  + contrasena + "'";
+            String insert = "INSERT INTO USUARIO (nombre, contrasena_hash) VALUES ('" +
+                    nombreUsuario + "', '" + contrasena + "')";
+
             try {
                 Connection conexion = ConexionBD.conectar();
                 Statement st = conexion.createStatement();
-                ResultSet rs = st.executeQuery(insert);
 
-                rs.close();
+                int filasAfectadas = st.executeUpdate(insert);
+
+                if (filasAfectadas > 0) {
+                    seHaRegistrado = true;
+                }
+
                 st.close();
                 conexion.close();
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-            seHaRegistrado = true;
-
         }
 
         return seHaRegistrado;
