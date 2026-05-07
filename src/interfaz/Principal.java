@@ -1,12 +1,13 @@
 package interfaz;
-import logica.Main;
+
+import logica.*;
 
 import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-public class Principal {
 
+public class Principal {
     JPanel panelMain;
     private Main mainInstance = new Main();
     private JButton botonNuevaPartida;
@@ -27,6 +28,7 @@ public class Principal {
     }
 
     public static void main(String[] args) {
+        Main.inicializarJuego();
         JFrame frame = new JFrame("Principal");
         frame.setContentPane(new Principal().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,4 +41,5 @@ public class Principal {
         frame.setLocationRelativeTo(null);
 
     }
+
 }

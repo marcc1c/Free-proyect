@@ -28,6 +28,33 @@ public abstract class Invocacion {
         this.rareza = rareza;
     }
 
+    public Invocacion(String rareza, String raza, double multiExteriencia, double multiDañoCritico,
+                      double multiProbCritico, double multiDefensa, double multiAtaque, double multiVida,
+                      double dañoCritico, double probCritico, double defensa, double ataque, double vidaMaxima,
+                      double vida, double experienciaMaxima, double experiencia, int ascension, int nivel, int id) {
+
+
+        this.rareza = rareza;
+        this.raza = raza;
+        this.multiExteriencia = multiExteriencia;
+        this.multiDañoCritico = multiDañoCritico;
+        this.multiProbCritico = multiProbCritico;
+        this.multiDefensa = multiDefensa;
+        this.multiAtaque = multiAtaque;
+        this.multiVida = multiVida;
+        this.dañoCritico = dañoCritico;
+        this.probCritico = probCritico;
+        this.defensa = defensa;
+        this.ataque = ataque;
+        this.vidaMaxima = vidaMaxima;
+        this.vida = vida;
+        this.experienciaMaxima = experienciaMaxima;
+        this.experiencia = experiencia;
+        this.ascension = ascension;
+        this.nivel = nivel;
+        this.id = id;
+    }
+
     private void asignarStats(double vida, double ataque, double defensa, double probCritico, double dañoCritico) {
         this.vida = vida * this.multiVida;
         this.vidaMaxima = vida * this.multiVida;

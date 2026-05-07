@@ -44,7 +44,7 @@ public class MenuInicial {
         botonCampoBatalla.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Invocacion invocacion : main.inventario) {
+                for (Invocacion invocacion : main.inventarioInvocaciones) {
                     if (invocacion.isEquipado()) {
                         invocacion.setExperiencia(invocacion.getExperiencia() + 5);
                         invocacion.subirExperiencia(invocacion);
@@ -78,14 +78,14 @@ public class MenuInicial {
     public void invocar() {
         Invocacion nuevaInvocacion = gacha.crearInvocacion(5, 1);
         System.out.println(nuevaInvocacion);
-        main.inventario.add(nuevaInvocacion);
+        main.inventarioInvocaciones.add(nuevaInvocacion);
     }
 
     public void mostrarInventario() {
         ventanaInventario.removeAll();
         ventanaInventario.setLayout(new BoxLayout(ventanaInventario, BoxLayout.Y_AXIS));
 
-        for (Invocacion invocacion : main.inventario) {
+        for (Invocacion invocacion : main.inventarioInvocaciones) {
 
             JPanel tarjeta = new JPanel();
             tarjeta.setPreferredSize(new Dimension(Integer.MAX_VALUE, 280));
@@ -215,7 +215,7 @@ public class MenuInicial {
             botonEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
             botonEliminar.addActionListener(e -> {
-                main.inventario.remove(invocacion);
+                main.inventarioInvocaciones.remove(invocacion);
                 mostrarInventario();
             });
 
@@ -248,7 +248,7 @@ public class MenuInicial {
 
         ventanaInventario.setPreferredSize(new Dimension(
                 ventanaInventario.getWidth(),
-                main.inventario.size() * 295 + 20
+                main.inventarioInvocaciones.size() * 295 + 20
         ));
 
         ventanaInventario.revalidate();

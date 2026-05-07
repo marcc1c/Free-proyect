@@ -6,7 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Free-proyect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Free-proyect.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/MenuInicial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/MenuInicial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuInicial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuInicial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Acuatico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Acuatico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Ave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Ave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Felino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Felino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Insecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Insecto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +43,7 @@
     "Application.Principal.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "dev",
@@ -41,9 +54,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }

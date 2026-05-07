@@ -1,7 +1,9 @@
 package cargar;
 
+import invocaciones.*;
 import items.Items;
 import items.LootEntry;
+import logica.Main;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -64,8 +66,7 @@ public class ConexionBD {
         return lootPorCalidad;
     }
 
-    public ArrayList<Items> cargarItemsUsuario(int idUsuario) {
-        ArrayList<Items> items = new ArrayList<>();
+    public void cargarItemsUsuario(int idUsuario) {
 
         String select = "SELECT i.id, i.nombre, i.descripcion, i.rareza, " +
                 "COALESCE(iu.cantidad, 0) AS cantidad " +
@@ -85,8 +86,8 @@ public class ConexionBD {
                 int cantidad = rs.getInt("cantidad");
 
                 Items item = new Items(nombre, descripcion, rareza, cantidad, id);
-
-                items.add(item);
+                Main.catalogoItems.add(item);
+                System.out.println(item);
             }
 
             rs.close();
@@ -96,8 +97,6 @@ public class ConexionBD {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-        return items;
     }
 
     public int iniciarSesion(String nombreUsuario, String contrasena) {
@@ -183,4 +182,145 @@ public class ConexionBD {
         return seHaRegistrado;
     }
 
+    public void cargarInvocaciones() {
+        int idUsuario = Main.idUsuario;
+
+        String select = "SELECT * FROM INVOCACION WHERE id_usuario = '" + idUsuario + "'";
+
+        try {
+            Connection conexion = ConexionBD.conectar();
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(select);
+
+            while (rs.next()) {
+
+                int idEnPartida = rs.getInt("id");
+                int nivel = rs.getInt("nivel");
+                int ascension = rs.getInt("ascension");
+
+                String raza = rs.getString("raza");
+                String rareza = rs.getString("rareza");
+                int experiencia = rs.getInt("experiencia");
+                int experienciaMaxima = rs.getInt("experiencia_maxima");
+                double vida = rs.getDouble( "vida");
+                double vidaMaxima = rs.getDouble("vida_maxima");
+                double ataque = rs.getDouble("ataque");
+                double defensa = rs.getDouble("defensa");
+                double probCritico = rs.getDouble("prob_critico");
+                double danoCritico = rs.getDouble("dano_critico");
+                double multiVida = rs.getDouble("multi_vida");
+                double multiAtaque = rs.getDouble("multi_ataque");
+                double multiDefensa = rs.getDouble("multi_defensa");
+                double multiProbCritico = rs.getDouble("multi_prob_critico");
+                double multiDanoCritico = rs.getDouble("multi_dano_critico");
+                double multiExperiencia = rs.getDouble("multi_experiencia");
+
+                Invocacion invocacion = null;
+
+                switch (raza) {
+                    case "Felino":
+                        invocacion = new Felino(
+                                rareza,
+                                raza,
+                                multiExperiencia,
+                                multiDanoCritico,
+                                multiProbCritico,
+                                multiDefensa,
+                                multiAtaque,
+                                multiVida,
+                                danoCritico,
+                                probCritico,
+                                defensa,
+                                ataque,
+                                vidaMaxima,
+                                vida,
+                                experienciaMaxima,
+                                experiencia,
+                                ascension,
+                                nivel,
+                                idEnPartida
+                        );                        break;
+
+                    case "Ave":
+                        invocacion = new Ave(
+                                rareza,
+                                raza,
+                                multiExperiencia,
+                                multiDanoCritico,
+                                multiProbCritico,
+                                multiDefensa,
+                                multiAtaque,
+                                multiVida,
+                                danoCritico,
+                                probCritico,
+                                defensa,
+                                ataque,
+                                vidaMaxima,
+                                vida,
+                                experienciaMaxima,
+                                experiencia,
+                                ascension,
+                                nivel,
+                                idEnPartida
+                        );                        break;
+
+                    case "Acuatico":
+                        invocacion = new Acuatico(
+                                rareza,
+                                raza,
+                                multiExperiencia,
+                                multiDanoCritico,
+                                multiProbCritico,
+                                multiDefensa,
+                                multiAtaque,
+                                multiVida,
+                                danoCritico,
+                                probCritico,
+                                defensa,
+                                ataque,
+                                vidaMaxima,
+                                vida,
+                                experienciaMaxima,
+                                experiencia,
+                                ascension,
+                                nivel,
+                                idEnPartida
+                        );
+                        break;
+
+                    case "Insecto":
+                    invocacion = new Insecto(
+                                rareza,
+                                raza,
+                                multiExperiencia,
+                                multiDanoCritico,
+                                multiProbCritico,
+                                multiDefensa,
+                                multiAtaque,
+                                multiVida,
+                                danoCritico,
+                                probCritico,
+                                defensa,
+                                ataque,
+                                vidaMaxima,
+                                vida,
+                                experienciaMaxima,
+                                experiencia,
+                                ascension,
+                                nivel,
+                                idEnPartida
+                        );
+                        break;
+                }
+                Main.inventarioInvocaciones.add(invocacion);
+                System.out.println(invocacion);
+            }
+            rs.close();
+            st.close();
+            conexion.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
