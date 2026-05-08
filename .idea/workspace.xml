@@ -5,13 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logica/Tarjetas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/TorreInfinita$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/TorreInfinita$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/interfaz/TorreInfinita.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/GameMenu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/GameMenu.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Inventario.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Inventario.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuInicial.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuInicial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Principal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/GameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Inventario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Combate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Combate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,10 +63,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.CampoBatalla.executor": "Run",
+    "Application.Combate.executor": "Run",
     "Application.GameMenu.executor": "Run",
     "Application.IniciarSesion.executor": "Run",
     "Application.Inventario.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.MenuCampoBatalla.executor": "Run",
     "Application.MenuInicial.executor": "Run",
     "Application.Principal.executor": "Run",
     "Application.Registrar.executor": "Run",

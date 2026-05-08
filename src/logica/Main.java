@@ -25,18 +25,6 @@ public class Main {
         conexionBD.cargarItemsUsuario(idUsuario);
     }
 
-    public static Invocacion saberEquipada() {
-        Invocacion invocacionEquipada = null;
-
-        for (Invocacion invocacion : Main.inventarioInvocaciones) {
-            if (invocacion.isEquipado()) {
-                invocacionEquipada = invocacion;
-            }
-        }
-
-        return invocacionEquipada;
-    }
-
     public static void inicializarJuego() {
         ConexionBD conexionBD = new ConexionBD();
 

@@ -74,7 +74,7 @@
               <text value="Inventario"/>
             </properties>
           </component>
-          <component id="b94ee" class="javax.swing.JButton" binding="buttonCamoDeBatalla">
+          <component id="b94ee" class="javax.swing.JButton" binding="buttonCampoDeBatalla">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="300" height="50"/>

@@ -20,4 +20,5 @@ public class Combate {
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         System.out.println("Vida: " + invocacion2.getVida());
     }
+
 }
