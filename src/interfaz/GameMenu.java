@@ -23,6 +23,11 @@ public class GameMenu {
     private JPanel panelInvocaciones;
 
     public GameMenu() {
+
+        scrollPaneInvocaciones.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPaneInvocaciones.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneInvocaciones.getVerticalScrollBar().setUnitIncrement(18);
+
         mostrarInvocaciones(Main.inventarioInvocaciones);
 
         buttonInventario.addActionListener(new ActionListener() {
@@ -37,6 +42,7 @@ public class GameMenu {
     }
 
     public static void main(String[] args) {
+
         Main.idUsuario = 1;
         Main.inicializarJuego();
 
@@ -49,7 +55,6 @@ public class GameMenu {
     }
 
     public void mostrarInvocaciones(ArrayList<Invocacion> arrayInvocaciones) {
-
         panelInvocaciones.removeAll();
         panelInvocaciones.setLayout(new BoxLayout(panelInvocaciones, BoxLayout.Y_AXIS));
         panelInvocaciones.setBackground(new Color(55, 134, 219));
@@ -63,15 +68,14 @@ public class GameMenu {
             panelInvocaciones.add(Box.createVerticalStrut(20));
         }
 
-        scrollPaneInvocaciones.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPaneInvocaciones.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneInvocaciones.getVerticalScrollBar().setUnitIncrement(18);
-
         panelInvocaciones.revalidate();
         panelInvocaciones.repaint();
+
+        scrollPaneInvocaciones.revalidate();
+        scrollPaneInvocaciones.repaint();
     }
 
-    public JPanel crearTarjetaInvocacion(Invocacion invocacion) {
+    public static JPanel crearTarjetaInvocacion(Invocacion invocacion) {
 
         Color colorBorde = obtenerColorRareza(invocacion.getRareza());
 
@@ -79,9 +83,12 @@ public class GameMenu {
         tarjeta.setLayout(new GridLayout(0, 1, 5, 5));
         tarjeta.setPreferredSize(new Dimension(240, 330));
         tarjeta.setMaximumSize(new Dimension(240, 330));
+        tarjeta.setMinimumSize(new Dimension(240, 330));
         tarjeta.setBackground(new Color(10, 37, 56));
-        tarjeta.setBorder(BorderFactory.createLineBorder(colorBorde, 3));
-
+        tarjeta.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(colorBorde, 3),
+                BorderFactory.createEmptyBorder(12, 12, 12, 12)
+        ));
         JLabel labelRaza = new JLabel(invocacion.getRaza());
         labelRaza.setForeground(Color.WHITE);
         labelRaza.setFont(new Font("Arial", Font.BOLD, 16));
@@ -92,6 +99,7 @@ public class GameMenu {
 
         JLabel labelNivel = new JLabel("Nv. " + invocacion.getNivel());
         labelNivel.setForeground(Color.WHITE);
+        labelNivel.setFont(new Font("Arial", Font.BOLD, 14));
 
         JProgressBar barraExperiencia = new JProgressBar(0, (int) invocacion.getExperienciaMaxima());
         barraExperiencia.setValue((int) invocacion.getExperiencia());
@@ -119,6 +127,11 @@ public class GameMenu {
         labelCritico.setForeground(Color.WHITE);
         labelDanoCritico.setForeground(Color.WHITE);
 
+        labelDefensa.setFont(new Font("Arial", Font.BOLD, 13));
+        labelAtaque.setFont(new Font("Arial", Font.BOLD, 13));
+        labelCritico.setFont(new Font("Arial", Font.BOLD, 13));
+        labelDanoCritico.setFont(new Font("Arial", Font.BOLD, 13));
+
         JButton buttonUsar = new JButton("Usar");
         JButton buttonEliminar = new JButton("Eliminar");
 
@@ -143,12 +156,16 @@ public class GameMenu {
         return tarjeta;
     }
 
-    private Color obtenerColorRareza(String rareza) {
+    public static Color obtenerColorRareza(String rareza) {
 
         Color color = Color.WHITE;
 
         switch (rareza) {
             case "Comun":
+                color = Color.WHITE;
+                break;
+
+            case "Común":
                 color = Color.WHITE;
                 break;
 
@@ -161,6 +178,10 @@ public class GameMenu {
                 break;
 
             case "Unico":
+                color = new Color(253, 207, 98);
+                break;
+
+            case "Único":
                 color = new Color(253, 207, 98);
                 break;
 

@@ -46,7 +46,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="cf937" class="javax.swing.JButton">
+              <component id="cf937" class="javax.swing.JButton" binding="buttonInvocaciones">
                 <constraints/>
                 <properties>
                   <background color="-16112328"/>
@@ -60,7 +60,7 @@
                   <text value="Invocaciones"/>
                 </properties>
               </component>
-              <component id="dc974" class="javax.swing.JButton">
+              <component id="dc974" class="javax.swing.JButton" binding="buttonObjetos">
                 <constraints/>
                 <properties>
                   <background color="-16112328"/>
@@ -82,6 +82,7 @@
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-13138213"/>
+          <wheelScrollingEnabled value="true"/>
         </properties>
         <border type="none"/>
         <children>

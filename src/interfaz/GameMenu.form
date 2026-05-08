@@ -127,7 +127,7 @@
       <scrollpane id="2c7bb" binding="scrollPaneInvocaciones">
         <constraints border-constraint="East"/>
         <properties>
-          <enabled value="false"/>
+          <enabled value="true"/>
         </properties>
         <border type="none"/>
         <children>
