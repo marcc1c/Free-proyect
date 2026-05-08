@@ -9,20 +9,6 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="7d1a" class="javax.swing.JButton" binding="buttonVolver">
-        <constraints border-constraint="South"/>
-        <properties>
-          <background color="-16112328"/>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="true"/>
-          <focusable value="false"/>
-          <font name="Vollkorn" size="18" style="1"/>
-          <foreground color="-1"/>
-          <horizontalAlignment value="0"/>
-          <horizontalTextPosition value="0"/>
-          <text value="Volver"/>
-        </properties>
-      </component>
       <grid id="4967f" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="North"/>
         <properties>
@@ -46,6 +32,20 @@
             </properties>
             <border type="none"/>
             <children>
+              <component id="7d1a" class="javax.swing.JButton" binding="buttonVolver">
+                <constraints/>
+                <properties>
+                  <background color="-16112328"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <focusable value="false"/>
+                  <font name="Vollkorn" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Volver"/>
+                </properties>
+              </component>
               <component id="cf937" class="javax.swing.JButton" binding="buttonInvocaciones">
                 <constraints/>
                 <properties>

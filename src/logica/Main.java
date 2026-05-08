@@ -1,6 +1,5 @@
 package logica;
 import cargar.*;
-import interfaz.Principal;
 import items.Items;
 import invocaciones.Invocacion;
 import items.LootEntry;
