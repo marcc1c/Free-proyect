@@ -13,6 +13,16 @@ import java.util.ArrayList;
 
 public class Tarjetas {
 
+    public static Invocacion saberInvocacionEquipada() {
+        Invocacion invocacionEquipada = null;
+        for (Invocacion invocacion : Main.inventarioInvocaciones) {
+            if (invocacion.isEquipado()) {
+                invocacionEquipada = invocacion;
+            }
+        }
+        return invocacionEquipada;
+    }
+    
     public static void equiparInvocacion(Invocacion invocacion) {
 
         for (Invocacion invo : Main.inventarioInvocaciones) {
@@ -30,7 +40,7 @@ public class Tarjetas {
         panelInvocaciones.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         for (Invocacion invocacion : arrayInvocaciones) {
-            JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelInvocaciones, scrollPaneInvocaciones);
+            JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelInvocaciones);
             tarjeta.setAlignmentX(Component.CENTER_ALIGNMENT);
 
             panelInvocaciones.add(tarjeta);
@@ -44,7 +54,7 @@ public class Tarjetas {
         scrollPaneInvocaciones.repaint();
     }
 
-    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelInvocaciones, JScrollPane scrollPaneInvocaciones) {
+    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelInvocaciones) {
 
         Color colorBorde = obtenerColorRareza(invocacion.getRareza());
 
@@ -112,7 +122,7 @@ public class Tarjetas {
             public void actionPerformed(ActionEvent e) {
 
                 equiparInvocacion(invocacion);
-                mostrarTarjetasInventario(1, panelInvocaciones, scrollPaneInvocaciones);
+                mostrarTarjetasInventario(0, panelInvocaciones);
                 pintarBotonUsar(buttonUsar, invocacion);
             }
         });
@@ -138,7 +148,7 @@ public class Tarjetas {
         return tarjeta;
     }
 
-    public static JPanel crearTarjetaItem(Items item, JPanel panelInvocaciones, JScrollPane scrollPaneInvocaciones) {
+    public static JPanel crearTarjetaItem(Items item, JPanel panelInvocaciones) {
 
         Color colorBorde = obtenerColorRareza(item.getRareza());
 
@@ -273,7 +283,7 @@ public class Tarjetas {
         panelGrid.repaint();
     }
 
-    public static void mostrarTarjetasInventario(int tipo, JPanel panelGrid, JScrollPane scrollPaneInventario) {
+    public static void mostrarTarjetasInventario(int tipo, JPanel panelGrid) {
         ArrayList<Items> arrayItems = Main.catalogoItems;
         ArrayList<Invocacion> arrayInvocaciones = Main.inventarioInvocaciones;
         panelGrid.removeAll();
@@ -282,12 +292,12 @@ public class Tarjetas {
 
         if (tipo == 0) {
             for (Invocacion invocacion : arrayInvocaciones) {
-                JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelGrid, scrollPaneInventario);
+                JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelGrid);
                 panelGrid.add(tarjeta);
             }
         } else {
             for (Items item : arrayItems) {
-                JPanel tarjeta = crearTarjetaItem(item, panelGrid, scrollPaneInventario);
+                JPanel tarjeta = crearTarjetaItem(item, panelGrid);
                 panelGrid.add(tarjeta);
             }
 
@@ -295,8 +305,6 @@ public class Tarjetas {
 
         panelGrid.revalidate();
         panelGrid.repaint();
-
-        scrollPaneInventario.revalidate();
-        scrollPaneInventario.repaint();
+        
     }
 }

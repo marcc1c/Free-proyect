@@ -20,6 +20,15 @@ public class MenuCampoBatalla {
 
     public MenuCampoBatalla() {
 
+        buttonTorreInfinita.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCampoBatalla);
+                frame.setContentPane(new PanelCombate().panelCombate);
+                frame.revalidate();
+                frame.repaint();
+            }
+        });
         buttonVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

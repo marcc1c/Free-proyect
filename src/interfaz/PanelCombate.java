@@ -1,11 +1,16 @@
 package interfaz;
 
+import invocaciones.Invocacion;
+import logica.Tarjetas;
+
 import javax.swing.*;
 
 public class PanelCombate {
     private JButton buttonInvocar;
-    private JTextPane textPane1;
+    private JTextPane textPanelRegistroCombate;
     public JPanel panelCombate;
+    private JPanel panelTuInvocacion;
+    private JPanel panelInvocacionEnemiga;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Combate");
@@ -16,5 +21,6 @@ public class PanelCombate {
     }
     public PanelCombate() {
 
+        Tarjetas.crearTarjetaInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
     }
 }

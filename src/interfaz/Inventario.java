@@ -20,7 +20,7 @@ public class Inventario {
     private JButton buttonObjetos;
 
     public Inventario() {
-        Tarjetas.mostrarTarjetasInventario(0, panelGrid, scrollPaneInventario);
+        Tarjetas.mostrarTarjetasInventario(0, panelGrid);
 
         panelGrid.setBackground(new Color(55, 134, 219));
         panelGrid.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
@@ -29,14 +29,14 @@ public class Inventario {
         buttonInvocaciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tarjetas.mostrarTarjetasInventario(0, panelGrid, scrollPaneInventario);
+                Tarjetas.mostrarTarjetasInventario(0, panelGrid);
             }
         });
 
         buttonObjetos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tarjetas.mostrarTarjetasInventario(1, panelGrid, scrollPaneInventario);
+                Tarjetas.mostrarTarjetasInventario(1, panelGrid);
             }
         });
 

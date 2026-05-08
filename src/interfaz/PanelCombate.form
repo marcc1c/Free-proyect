@@ -81,31 +81,39 @@
               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <grid id="e8a39" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="e8a39" binding="panelTuInvocacion" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="200" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-13138213"/>
+            </properties>
             <border type="none"/>
             <children/>
           </grid>
-          <grid id="dc352" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="dc352" binding="panelInvocacionEnemiga" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-13138213"/>
+            </properties>
             <border type="none"/>
             <children/>
           </grid>
-          <component id="530ba" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+          <component id="530ba" class="javax.swing.JTextPane" binding="textPanelRegistroCombate">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16112328"/>
+              <editable value="false"/>
+              <enabled value="true"/>
+            </properties>
           </component>
         </children>
       </grid>
