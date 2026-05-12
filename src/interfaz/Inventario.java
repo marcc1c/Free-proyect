@@ -1,30 +1,26 @@
 package interfaz;
 
-import logica.Main;
 import logica.Tarjetas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class Inventario {
 
     public JPanel panelInventario;
     private JButton buttonVolver;
     private JPanel panelGrid;
-    private JScrollPane scrollPaneInventario;
     private JButton buttonInvocaciones;
     private JButton buttonObjetos;
 
     public Inventario() {
-        Tarjetas.mostrarTarjetasInventario(0, panelGrid);
 
+        panelGrid.setLayout(new BorderLayout());
         panelGrid.setBackground(new Color(55, 134, 219));
-        panelGrid.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
 
+        Tarjetas.mostrarTarjetasInventario(0, panelGrid);
 
         buttonInvocaciones.addActionListener(new ActionListener() {
             @Override

@@ -3,8 +3,6 @@ package interfaz;
 import logica.Tarjetas;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PanelCombate {
     private JButton buttonInvocar;
@@ -24,15 +22,5 @@ public class PanelCombate {
     public PanelCombate() {
 
         Tarjetas.crearTarjetaInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
-
-        buttonHuir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
-                frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
-                frame.revalidate();
-                frame.repaint();
-            }
-        });
     }
 }

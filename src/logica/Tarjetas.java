@@ -1,8 +1,6 @@
 package logica;
 
 import items.Items;
-import logica.*;
-
 import invocaciones.Invocacion;
 
 import javax.swing.*;
@@ -15,14 +13,16 @@ public class Tarjetas {
 
     public static Invocacion saberInvocacionEquipada() {
         Invocacion invocacionEquipada = null;
+
         for (Invocacion invocacion : Main.inventarioInvocaciones) {
             if (invocacion.isEquipado()) {
                 invocacionEquipada = invocacion;
             }
         }
+
         return invocacionEquipada;
     }
-    
+
     public static void equiparInvocacion(Invocacion invocacion) {
 
         for (Invocacion invo : Main.inventarioInvocaciones) {
@@ -32,30 +32,93 @@ public class Tarjetas {
         invocacion.setEquipado(true);
     }
 
-    public static void mostrarInvocaciones(ArrayList<Invocacion> arrayInvocaciones, JPanel panelInvocaciones, JScrollPane scrollPaneInvocaciones) {
+    public static void mostrarTarjetasInventario(int tipo, JPanel panelContenedor) {
 
-        panelInvocaciones.removeAll();
-        panelInvocaciones.setLayout(new BoxLayout(panelInvocaciones, BoxLayout.Y_AXIS));
-        panelInvocaciones.setBackground(new Color(55, 134, 219));
-        panelInvocaciones.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        ArrayList<Items> arrayItems = Main.catalogoItems;
+        ArrayList<Invocacion> arrayInvocaciones = Main.inventarioInvocaciones;
 
-        for (Invocacion invocacion : arrayInvocaciones) {
-            JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelInvocaciones);
-            tarjeta.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panelContenedor.removeAll();
+        panelContenedor.setLayout(new BorderLayout());
+        panelContenedor.setBackground(new Color(55, 134, 219));
 
-            panelInvocaciones.add(tarjeta);
-            panelInvocaciones.add(Box.createVerticalStrut(20));
+        JPanel panelTarjetas = new JPanel();
+        panelTarjetas.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        panelTarjetas.setBackground(new Color(55, 134, 219));
+        panelTarjetas.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JScrollPane scrollPane = new JScrollPane(panelTarjetas);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setBorder(null);
+        scrollPane.getViewport().setBackground(new Color(55, 134, 219));
+
+        panelContenedor.add(scrollPane, BorderLayout.CENTER);
+
+        if (tipo == 0) {
+            for (Invocacion invocacion : arrayInvocaciones) {
+                JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelContenedor);
+
+                tarjeta.setPreferredSize(new Dimension(240, 330));
+                tarjeta.setMinimumSize(new Dimension(240, 330));
+                tarjeta.setMaximumSize(new Dimension(240, 330));
+
+                panelTarjetas.add(tarjeta);
+            }
+        } else {
+            for (Items item : arrayItems) {
+                JPanel tarjeta = crearTarjetaItem(item);
+
+                tarjeta.setPreferredSize(new Dimension(240, 330));
+                tarjeta.setMinimumSize(new Dimension(240, 330));
+                tarjeta.setMaximumSize(new Dimension(240, 330));
+
+                panelTarjetas.add(tarjeta);
+            }
         }
 
-        panelInvocaciones.revalidate();
-        panelInvocaciones.repaint();
+        int anchoDisponible = panelContenedor.getWidth();
 
-        scrollPaneInvocaciones.revalidate();
-        scrollPaneInvocaciones.repaint();
+        if (anchoDisponible <= 0) {
+            anchoDisponible = 1000;
+        }
+
+        int cantidadTarjetas;
+
+        if (tipo == 0) {
+            cantidadTarjetas = arrayInvocaciones.size();
+        } else {
+            cantidadTarjetas = arrayItems.size();
+        }
+
+        int altoTarjeta = 330;
+        int anchoTarjeta = 240;
+        int espacio = 20;
+
+        int tarjetasPorFila = anchoDisponible / (anchoTarjeta + espacio);
+
+        if (tarjetasPorFila < 1) {
+            tarjetasPorFila = 1;
+        }
+
+        int filas = cantidadTarjetas / tarjetasPorFila;
+
+        if (cantidadTarjetas % tarjetasPorFila != 0) {
+            filas++;
+        }
+
+        int altoTotal = filas * (altoTarjeta + espacio) + 60;
+
+        panelTarjetas.setPreferredSize(new Dimension(anchoDisponible, altoTotal));
+
+        panelTarjetas.revalidate();
+        panelTarjetas.repaint();
+
+        panelContenedor.revalidate();
+        panelContenedor.repaint();
     }
 
-    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelInvocaciones) {
-
+    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelContenedor) {
         Color colorBorde = obtenerColorRareza(invocacion.getRareza());
 
         JPanel tarjeta = new JPanel();
@@ -120,10 +183,8 @@ public class Tarjetas {
         buttonUsar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 equiparInvocacion(invocacion);
-                mostrarTarjetasInventario(0, panelInvocaciones);
-                pintarBotonUsar(buttonUsar, invocacion);
+                mostrarTarjetasInventario(0, panelContenedor);
             }
         });
 
@@ -148,7 +209,7 @@ public class Tarjetas {
         return tarjeta;
     }
 
-    public static JPanel crearTarjetaItem(Items item, JPanel panelInvocaciones) {
+    public static JPanel crearTarjetaItem(Items item) {
 
         Color colorBorde = obtenerColorRareza(item.getRareza());
 
@@ -163,27 +224,28 @@ public class Tarjetas {
                 BorderFactory.createEmptyBorder(12, 12, 12, 12)
         ));
 
-        JLabel labelRaza = new JLabel(item.getNombre());
-        labelRaza.setForeground(Color.WHITE);
-        labelRaza.setFont(new Font("Arial", Font.BOLD, 16));
+        JLabel labelNombre = new JLabel(item.getNombre());
+        labelNombre.setForeground(Color.WHITE);
+        labelNombre.setFont(new Font("Arial", Font.BOLD, 16));
 
         JLabel labelRareza = new JLabel(item.getRareza());
         labelRareza.setForeground(colorBorde);
         labelRareza.setFont(new Font("Arial", Font.BOLD, 14));
 
         JTextArea textAreaDescripcion = new JTextArea(item.getDescripcion());
-        textAreaDescripcion.setForeground(Color.white);
+        textAreaDescripcion.setForeground(Color.WHITE);
         textAreaDescripcion.setFont(new Font("Arial", Font.BOLD, 14));
         textAreaDescripcion.setLineWrap(true);
         textAreaDescripcion.setWrapStyleWord(true);
-        textAreaDescripcion.setBackground(new Color (10, 37, 56));
+        textAreaDescripcion.setBackground(new Color(10, 37, 56));
         textAreaDescripcion.setEditable(false);
+        textAreaDescripcion.setFocusable(false);
 
-        JLabel labelCantidad = new JLabel(String.valueOf(item.getCantidad()));
-        labelCantidad.setForeground(Color.white);
+        JLabel labelCantidad = new JLabel("Cantidad: " + item.getCantidad());
+        labelCantidad.setForeground(Color.WHITE);
         labelCantidad.setFont(new Font("Arial", Font.BOLD, 14));
 
-        tarjeta.add(labelRaza);
+        tarjeta.add(labelNombre);
         tarjeta.add(labelRareza);
         tarjeta.add(new JSeparator());
         tarjeta.add(textAreaDescripcion);
@@ -255,14 +317,19 @@ public class Tarjetas {
         int anchoScroll = scrollPane.getViewport().getWidth();
 
         if (anchoScroll <= 0) {
+            anchoScroll = scrollPane.getWidth();
+        }
+
+        if (anchoScroll <= 0) {
             anchoScroll = 900;
         }
 
         int anchoTarjeta = 240;
         int altoTarjeta = 330;
-        int espacio = 20;
+        int espacioHorizontal = 20;
+        int espacioVertical = 20;
 
-        int tarjetasPorFila = (anchoScroll - espacio) / (anchoTarjeta + espacio);
+        int tarjetasPorFila = (anchoScroll - espacioHorizontal) / (anchoTarjeta + espacioHorizontal);
 
         if (tarjetasPorFila < 1) {
             tarjetasPorFila = 1;
@@ -274,37 +341,16 @@ public class Tarjetas {
             filas++;
         }
 
-        int altoTotal = filas * (altoTarjeta + espacio) + espacio;
+        int altoTotal = filas * (altoTarjeta + espacioVertical) + espacioVertical;
+
+        if (altoTotal < scrollPane.getHeight()) {
+            altoTotal = scrollPane.getHeight();
+        }
 
         panelGrid.setPreferredSize(new Dimension(anchoScroll, altoTotal));
         panelGrid.setMinimumSize(new Dimension(anchoScroll, altoTotal));
 
         panelGrid.revalidate();
         panelGrid.repaint();
-    }
-
-    public static void mostrarTarjetasInventario(int tipo, JPanel panelGrid) {
-        ArrayList<Items> arrayItems = Main.catalogoItems;
-        ArrayList<Invocacion> arrayInvocaciones = Main.inventarioInvocaciones;
-        panelGrid.removeAll();
-        panelGrid.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
-        panelGrid.setBackground(new Color(55, 134, 219));
-
-        if (tipo == 0) {
-            for (Invocacion invocacion : arrayInvocaciones) {
-                JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelGrid);
-                panelGrid.add(tarjeta);
-            }
-        } else {
-            for (Items item : arrayItems) {
-                JPanel tarjeta = crearTarjetaItem(item, panelGrid);
-                panelGrid.add(tarjeta);
-            }
-
-        }
-
-        panelGrid.revalidate();
-        panelGrid.repaint();
-        
     }
 }

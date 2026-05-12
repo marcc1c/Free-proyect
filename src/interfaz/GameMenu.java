@@ -21,13 +21,8 @@ public class GameMenu {
     private JButton buttonSalir;
 
     private JScrollPane scrollPaneInvocaciones;
-    private JPanel panelInvocaciones;
 
     public GameMenu() {
-
-        scrollPaneInvocaciones.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPaneInvocaciones.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneInvocaciones.getVerticalScrollBar().setUnitIncrement(18);
 
 
         buttonInventario.addActionListener(new ActionListener() {
@@ -46,6 +41,14 @@ public class GameMenu {
                 frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
                 frame.revalidate();
                 frame.repaint();
+            }
+        });
+
+        buttonInvocar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Gacha gacha = new Gacha();
+                gacha.crearInvocacion(1, 1);
             }
         });
     }

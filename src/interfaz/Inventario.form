@@ -78,27 +78,14 @@
           </grid>
         </children>
       </grid>
-      <scrollpane id="c9988" binding="scrollPaneInventario">
+      <grid id="9ee2b" binding="panelGrid" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-13138213"/>
-          <wheelScrollingEnabled value="true"/>
         </properties>
         <border type="none"/>
-        <children>
-          <grid id="2afbd" binding="panelGrid" layout-manager="BorderLayout" hgap="0" vgap="0">
-            <constraints/>
-            <properties>
-              <background color="-13138213"/>
-            </properties>
-            <clientProperties>
-              <html.disable class="java.lang.Boolean" value="false"/>
-            </clientProperties>
-            <border type="none"/>
-            <children/>
-          </grid>
-        </children>
-      </scrollpane>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

@@ -134,21 +134,6 @@
           </vspacer>
         </children>
       </grid>
-      <scrollpane id="2c7bb" binding="scrollPaneInvocaciones">
-        <constraints border-constraint="East"/>
-        <properties>
-          <enabled value="true"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <grid id="2d529" binding="panelInvocaciones" layout-manager="BorderLayout" hgap="0" vgap="0">
-            <constraints/>
-            <properties/>
-            <border type="none"/>
-            <children/>
-          </grid>
-        </children>
-      </scrollpane>
     </children>
   </grid>
 </form>

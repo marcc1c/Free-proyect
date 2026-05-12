@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/GameMenu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/GameMenu.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/GameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/Inventario.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Inventario.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Inventario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Gacha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Gacha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Tarjetas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Tarjetas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
