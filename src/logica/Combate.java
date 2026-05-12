@@ -15,10 +15,18 @@ public class Combate {
             dañoFinal = dañoFinal * invocacion1.getDañoCritico();
         }
         double dañoReal = dañoFinal - invocacion2.getDefensa();
-        if (dañoReal < 0) dañoReal = 0;
+
+        if (dañoReal < 0) {
+            dañoReal = 0;
+        }
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         System.out.println("Vida: " + invocacion2.getVida());
+
+        if (invocacion2.getVida() <= 0) {
+
+        }
+
     }
 
 }
