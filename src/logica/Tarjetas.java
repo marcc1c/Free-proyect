@@ -148,7 +148,7 @@ public class Tarjetas {
         barraExperiencia.setValue((int) invocacion.getExperiencia());
         barraExperiencia.setStringPainted(true);
         barraExperiencia.setString((int) invocacion.getExperiencia() + "/" + (int) invocacion.getExperienciaMaxima());
-        barraExperiencia.setForeground(colorBorde);
+        barraExperiencia.setForeground(Color.blue);
         barraExperiencia.setBackground(new Color(45, 55, 65));
         barraExperiencia.setFont(new Font("Arial", Font.BOLD, 12));
 
@@ -196,7 +196,6 @@ public class Tarjetas {
 
         tarjeta.add(labelRaza);
         tarjeta.add(labelRareza);
-        tarjeta.add(new JSeparator());
         tarjeta.add(labelNivel);
         tarjeta.add(barraExperiencia);
         tarjeta.add(barraVida);

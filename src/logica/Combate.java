@@ -6,8 +6,10 @@ import java.util.Random;
 
 public class Combate {
 
-    public void turno(Invocacion invocacion1, Invocacion invocacion2) {
+    public boolean turno(Invocacion invocacion1, Invocacion invocacion2) {
         Random random = new Random();
+
+        boolean invocacion2ConVida = true;
         double probCritico = random.nextDouble();
         double dañoFinal = invocacion1.getAtaque();
 
@@ -24,9 +26,11 @@ public class Combate {
         System.out.println("Vida: " + invocacion2.getVida());
 
         if (invocacion2.getVida() <= 0) {
-
+            invocacion2ConVida = false;
+            invocacion1.subirExperiencia(invocacion2);
         }
 
+        return invocacion2ConVida;
     }
 
 }
