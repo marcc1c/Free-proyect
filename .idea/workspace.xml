@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Inventario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cargar/ConexionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cargar/ConexionBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/GameMenu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/GameMenu.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Tarjetas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Tarjetas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logica/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "cosasClaseQueHagoEn2Horas",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/CEP-MATI/Documents/GitHub/Free-proyect",
     "node.js.detected.package.eslint": "true",
@@ -113,6 +114,13 @@
         <item itemvalue="Application.IniciarSesion" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -185,8 +185,7 @@ public class ConexionBD {
         }
     }
 
-    public void cargarInvocaciones() {
-        int idUsuario = Main.idUsuario;
+    public void cargarInvocaciones(int idUsuario) {
 
         String select = "SELECT * FROM INVOCACION WHERE id_usuario = '" + idUsuario + "'";
 
@@ -326,4 +325,28 @@ public class ConexionBD {
             System.out.println(e.getMessage());
         }
     }
+
+
+        public void cargarDatosCombate(int idUsuario) {
+
+            String select = "SELECT * FROM PROGRESO_COMBATE WHERE id_usuario = '" + idUsuario + "'";
+
+            try {
+                Connection conexion = ConexionBD.conectar();
+                Statement st = conexion.createStatement();
+                ResultSet rs = st.executeQuery(select);
+
+                if (rs.next()) {
+                    Main.pisoTorreInfinita = rs.getInt("piso_torre_infinita");
+                    Main.nivelCampana = rs.getInt("nivel_campana");
+                    Main.pisoCampana = rs.getInt("piso_campana");
+                }
+
+                st.close();
+                conexion.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error al cargar los datos: " + e.getMessage());
+            }
+        }
 }

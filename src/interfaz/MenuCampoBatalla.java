@@ -1,5 +1,7 @@
 package interfaz;
 
+import logica.Main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +21,7 @@ public class MenuCampoBatalla {
     }
 
     public MenuCampoBatalla() {
+        buttonTorreInfinita.setText("Torre infinita " + Main.pisoTorreInfinita);
 
         buttonTorreInfinita.addActionListener(new ActionListener() {
             @Override

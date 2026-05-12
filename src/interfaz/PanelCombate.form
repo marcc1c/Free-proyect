@@ -49,7 +49,7 @@
               <text value="Habilidades"/>
             </properties>
           </component>
-          <component id="2bdd5" class="javax.swing.JButton">
+          <component id="2bdd5" class="javax.swing.JButton" binding="buttonHuir">
             <constraints/>
             <properties>
               <background color="-45730"/>
