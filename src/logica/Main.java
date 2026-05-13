@@ -18,6 +18,8 @@ public class Main {
     public static int pisoTorreInfinita;
     public static int pisoCampana;
     public static int nivelCampana;
+    public static int suerte = 1;
+
 
 
 

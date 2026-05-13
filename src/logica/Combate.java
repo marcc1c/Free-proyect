@@ -13,7 +13,7 @@ public class Combate {
         double probCritico = random.nextDouble();
         double dañoFinal = invocacion1.getAtaque();
 
-        if (probCritico < invocacion1.getProbCritico()) {
+        if (probCritico <= invocacion1.getProbCritico()) {
             dañoFinal = dañoFinal * invocacion1.getDañoCritico();
         }
         double dañoReal = dañoFinal - invocacion2.getDefensa();
@@ -28,6 +28,7 @@ public class Combate {
         if (invocacion2.getVida() <= 0) {
             invocacion2ConVida = false;
             invocacion1.subirExperiencia(invocacion2);
+            invocacion2.setVida(invocacion2.getVidaMaxima());
         }
 
         return invocacion2ConVida;

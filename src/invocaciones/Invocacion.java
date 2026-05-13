@@ -127,9 +127,6 @@ public abstract class Invocacion {
                 this.experienciaMaxima = Math.round(10 * Math.pow(this.nivel, 1.15));
                 subido = true;
 
-                double incProb;
-                int incFuerza;
-                int incVida;
 
                 switch (this.rareza) {
 

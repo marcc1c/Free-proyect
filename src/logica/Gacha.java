@@ -44,7 +44,7 @@ public class Gacha {
         return raza;
     }
 
-    public void crearInvocacion(int suerte, int nivel) {
+    public Invocacion crearInvocacion(int suerte, int nivel) {
         Invocacion invocacion = null;
 
         switch (determinarRaza()) {
@@ -64,9 +64,7 @@ public class Gacha {
                 invocacion = new Insecto(0, nivel, determinarRaza(), determinarRareza(suerte));
                 break;
         }
-        Main.inventarioInvocaciones.add(invocacion);
-
-
+        return invocacion;
     }
 }
 

@@ -25,7 +25,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="a7f1d" class="javax.swing.JButton" binding="buttonInvocar">
+          <component id="a7f1d" class="javax.swing.JButton" binding="buttonAtacar">
             <constraints/>
             <properties>
               <background color="-16112328"/>

@@ -48,7 +48,7 @@ public class GameMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gacha gacha = new Gacha();
-                gacha.crearInvocacion(1, 1);
+                Main.inventarioInvocaciones.add(gacha.crearInvocacion(Main.suerte, 1));
             }
         });
     }
