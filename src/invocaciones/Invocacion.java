@@ -22,11 +22,11 @@ public abstract class Invocacion {
 
         calcularMultiplicadores(raza);
         calcularStats(rareza);
-        calcularExperiencia();
         this.id = id;
         this.nivel = nivel;
         this.raza = raza;
         this.rareza = rareza;
+        this.multiExteriencia = calcularExperiencia();
     }
 
     public Invocacion(String rareza, String raza, double multiExperiencia, double multiDañoCritico,
@@ -187,21 +187,27 @@ public abstract class Invocacion {
             return subido;
         }
 
-        public void calcularExperiencia() {
+        public int calcularExperiencia() {
         double multiplicadorPorRareza = 1;
+
         switch (this.rareza) {
             case "Natural":
                 multiplicadorPorRareza = 1.2;
+                break;
             case "Raro":
                 multiplicadorPorRareza = 1.5;
+                break;
             case "Único":
                 multiplicadorPorRareza = 1.7;
+                break;
             case "Extinto":
                 multiplicadorPorRareza = 2;
+                break;
             case "Primordial":
                 multiplicadorPorRareza = 2.5;
+                break;
         }
-        this.experiencia = Math.round(nivel * multiplicadorPorRareza);
+        return (int) Math.round(nivel * multiplicadorPorRareza);
         }
 
 
