@@ -37,7 +37,7 @@
               <text value="Atacar"/>
             </properties>
           </component>
-          <component id="2a0d" class="javax.swing.JButton">
+          <component id="2a0d" class="javax.swing.JButton" binding="buttonHabilidades">
             <constraints/>
             <properties>
               <background color="-16112328"/>
@@ -59,6 +59,20 @@
               <font name="Vollkorn" size="18" style="1"/>
               <foreground color="-1"/>
               <text value="Huir"/>
+            </properties>
+          </component>
+          <component id="b8643" class="javax.swing.JButton" binding="buttonSalir">
+            <constraints/>
+            <properties>
+              <background color="-45730"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <hideActionText value="false"/>
+              <text value="Salir"/>
             </properties>
           </component>
         </children>
@@ -113,6 +127,8 @@
               <background color="-16112328"/>
               <editable value="false"/>
               <enabled value="true"/>
+              <font name="Verdana" size="18"/>
+              <foreground color="-1"/>
             </properties>
           </component>
         </children>

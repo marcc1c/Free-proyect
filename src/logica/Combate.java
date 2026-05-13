@@ -4,25 +4,35 @@ import invocaciones.Invocacion;
 import items.Items;
 import items.LootEntry;
 
+import javax.swing.*;
 import java.util.*;
 
 public class Combate {
 
-    public boolean turno(Invocacion invocacion1, Invocacion invocacion2) {
+    public boolean turno(Invocacion invocacion1, Invocacion invocacion2, JTextPane logsCombate, boolean esEnemigo) {
         Random random = new Random();
 
+        if (esEnemigo) {
+            logsCombate.setText(logsCombate.getText() + "Enemigo ha hecho ");
+        } else {
+            logsCombate.setText(logsCombate.getText() + "Tu invocacion ha hecho ");
+
+        }
         boolean invocacion2ConVida = true;
-        double probCritico = random.nextDouble();
+        double probCritico = random.nextDouble()*100;
         double dañoFinal = invocacion1.getAtaque();
 
         if (probCritico <= invocacion1.getProbCritico()) {
             dañoFinal = dañoFinal * invocacion1.getDañoCritico();
+            logsCombate.setText(logsCombate.getText() + "CRÍTICO ");
+
         }
         double dañoReal = dañoFinal - invocacion2.getDefensa();
 
         if (dañoReal < 0) {
             dañoReal = 0;
         }
+        logsCombate.setText(logsCombate.getText() + dañoReal + " puntos de daño\n");
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         System.out.println("Vida: " + invocacion2.getVida());
@@ -32,7 +42,9 @@ public class Combate {
             invocacion1.subirExperiencia(calcularExperiencia(invocacion2));
             invocacion2.setVida(invocacion2.getVidaMaxima());
             invocacion1.setVida(invocacion1.getVidaMaxima());
-            calcularDrop(invocacion2);
+            if (!esEnemigo) {
+                calcularDrop(invocacion2, logsCombate);
+            }
         }
 
         return invocacion2ConVida;
@@ -61,7 +73,7 @@ public class Combate {
         return (int) Math.round(invocacion.getNivel() * multiplicadorPorRareza);
     }
 
-    public void calcularDrop(Invocacion invocacion) {
+    public void calcularDrop(Invocacion invocacion, JTextPane logsCombate) {
         Random random = new Random();
 
         for (Map.Entry<String, ArrayList<LootEntry>> entry : Main.lootPorCalidad.entrySet()) {
@@ -80,8 +92,8 @@ public class Combate {
 
                         for (Items itemsJugador : Main.catalogoItems) {
                             if (itemsJugador.getId() == entradaLoot.getIdItem()) {
+                                logsCombate.setText(logsCombate.getText() + "Has recibido " + itemsJugador.getNombre() + " x " + cantidadItem);
                                 itemsJugador.setCantidad(itemsJugador.getCantidad() + cantidadItem);
-                                System.out.println("Se ha sumado el objeto " + itemsJugador);
                             }
                         }
                     }

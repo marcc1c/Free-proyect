@@ -17,6 +17,8 @@ public class PanelCombate {
     private JPanel panelTuInvocacion;
     private JPanel panelInvocacionEnemiga;
     private JButton buttonHuir;
+    private JButton buttonSalir;
+    private JButton buttonHabilidades;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Combate");
@@ -27,6 +29,7 @@ public class PanelCombate {
     }
     public PanelCombate() {
         Gacha gacha = new Gacha();
+        buttonSalir.setVisible(false);
         Invocacion enemigo = gacha.crearInvocacion(Main.pisoTorreInfinita/2, Main.pisoTorreInfinita/2);
 
         Tarjetas.crearTarjetaInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
@@ -35,20 +38,26 @@ public class PanelCombate {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Combate combate = new Combate();
-
-                if (!combate.turno(Tarjetas.saberInvocacionEquipada(), enemigo)) {
-                    System.out.println("Has ganado");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
-                    frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
-                    frame.revalidate();
-                    frame.repaint();
-                } else if (!combate.turno(enemigo, Tarjetas.saberInvocacionEquipada())) {
-                    System.out.println("Has muerto");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
-                    frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
-                    frame.revalidate();
-                    frame.repaint();
+                String ganadoOperdido = "";
+                if (!combate.turno(Tarjetas.saberInvocacionEquipada(), enemigo, textPanelRegistroCombate, false)) {
+                    ganadoOperdido = "HAS GANADO";
+                } else if (!combate.turno(enemigo, Tarjetas.saberInvocacionEquipada(), textPanelRegistroCombate, true)) {
+                    ganadoOperdido = "HAS PERDIDO";
                 }
+                textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + ganadoOperdido);
+                buttonAtacar.setVisible(false);
+                buttonHuir.setVisible(false);
+                buttonHabilidades.setVisible(false);
+                buttonSalir.setVisible(true);
+            }
+        });
+        buttonSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
+                frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
