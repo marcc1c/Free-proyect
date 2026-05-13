@@ -2,42 +2,42 @@ package items;
 
 public class LootEntry {
 
-    private int idObjeto, cantidadMinima, cantidadMaxima;
+    private int cantidadMinima, cantidadMaxima, idItem;
     private double porcentaje;
 
-    public LootEntry(int idObjeto, double porcentaje, int cantidadMinima, int cantidadMaxima) {
-        this.idObjeto = idObjeto;
-        this.porcentaje = porcentaje;
+    public LootEntry(int cantidadMinima, int idItem, int cantidadMaxima, double porcentaje) {
         this.cantidadMinima = cantidadMinima;
+        this.idItem = idItem;
         this.cantidadMaxima = cantidadMaxima;
-    }
-
-    public int getIdObjeto() {
-        return idObjeto;
-    }
-
-    public double getPorcentaje() {
-        return porcentaje;
+        this.porcentaje = porcentaje;
     }
 
     public int getCantidadMinima() {
         return cantidadMinima;
     }
 
-    public int getCantidadMaxima() {
-        return cantidadMaxima;
-    }
-
-    public void setIdObjeto(int idObjeto) {
-        this.idObjeto = idObjeto;
-    }
-
     public void setCantidadMinima(int cantidadMinima) {
         this.cantidadMinima = cantidadMinima;
     }
 
+    public int getCantidadMaxima() {
+        return cantidadMaxima;
+    }
+
     public void setCantidadMaxima(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
+    }
+
+    public int getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
+    }
+
+    public double getPorcentaje() {
+        return porcentaje;
     }
 
     public void setPorcentaje(double porcentaje) {
@@ -47,9 +47,9 @@ public class LootEntry {
     @Override
     public String toString() {
         return "LootEntry{" +
-                "idObjeto=" + idObjeto +
-                ", cantidadMinima=" + cantidadMinima +
+                "cantidadMinima=" + cantidadMinima +
                 ", cantidadMaxima=" + cantidadMaxima +
+                ", idItem=" + idItem +
                 ", porcentaje=" + porcentaje +
                 '}';
     }

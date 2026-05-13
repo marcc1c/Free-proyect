@@ -29,8 +29,7 @@ public class ConexionBD {
         return conexion;
     }
 
-    public Map<String, List<LootEntry>> cargarPoolObjetosDrop() {
-        Map<String, List<LootEntry>> lootPorCalidad = new HashMap<>();
+    public void cargarPoolObjetosDrop(Map<String, ArrayList<LootEntry>> lootPorCalidad) {
 
         String select = "SELECT calidad_enemigo, id_item, porcentaje, cantidad_minima, cantidad_maxima FROM LOOT_CALIDAD";
 
@@ -41,12 +40,12 @@ public class ConexionBD {
 
             while (rs.next()) {
                 String calidadEnemigo = rs.getString("calidad_enemigo");
-                int idObjeto = rs.getInt("id_objeto");
+                int idObjeto = rs.getInt("id_item");
                 double porcentaje = rs.getDouble("porcentaje");
                 int cantidadMinima = rs.getInt("cantidad_minima");
                 int cantidadMaxima = rs.getInt("cantidad_maxima");
 
-                LootEntry lootEntry = new LootEntry(idObjeto, porcentaje, cantidadMinima, cantidadMaxima);
+                LootEntry lootEntry = new LootEntry(cantidadMinima, idObjeto, cantidadMaxima, porcentaje);
 
                 if (!lootPorCalidad.containsKey(calidadEnemigo)) {
                     lootPorCalidad.put(calidadEnemigo, new ArrayList<>());
@@ -54,7 +53,7 @@ public class ConexionBD {
 
                 lootPorCalidad.get(calidadEnemigo).add(lootEntry);
             }
-
+            System.out.println(lootPorCalidad);
             rs.close();
             st.close();
             conexion.close();
@@ -62,8 +61,6 @@ public class ConexionBD {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-        return lootPorCalidad;
     }
 
     public void cargarItemsUsuario(int idUsuario) {

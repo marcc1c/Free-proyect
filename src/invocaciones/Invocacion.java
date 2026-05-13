@@ -26,7 +26,6 @@ public abstract class Invocacion {
         this.nivel = nivel;
         this.raza = raza;
         this.rareza = rareza;
-        this.multiExteriencia = calcularExperiencia();
     }
 
     public Invocacion(String rareza, String raza, double multiExperiencia, double multiDañoCritico,
@@ -116,10 +115,10 @@ public abstract class Invocacion {
         }
     }
 
-    public boolean subirExperiencia(Invocacion enemigo) {
+    public boolean subirExperiencia(double experienciaRecibida) {
         boolean subido = false;
 
-            this.experiencia += enemigo.multiExteriencia;
+            this.experiencia += experienciaRecibida;
 
             if (this.experiencia >= this.experienciaMaxima) {
                 this.experiencia -= this.experienciaMaxima;
@@ -183,30 +182,6 @@ public abstract class Invocacion {
 
             return subido;
         }
-
-        public int calcularExperiencia() {
-        double multiplicadorPorRareza = 1;
-
-        switch (this.rareza) {
-            case "Natural":
-                multiplicadorPorRareza = 1.2;
-                break;
-            case "Raro":
-                multiplicadorPorRareza = 1.5;
-                break;
-            case "Único":
-                multiplicadorPorRareza = 1.7;
-                break;
-            case "Extinto":
-                multiplicadorPorRareza = 2;
-                break;
-            case "Primordial":
-                multiplicadorPorRareza = 2.5;
-                break;
-        }
-        return (int) Math.round(nivel * multiplicadorPorRareza);
-        }
-
 
     @Override
     public String toString() {
