@@ -1,14 +1,10 @@
 package interfaz;
 
 import logica.*;
-import invocaciones.Invocacion;
-import logica.Combate;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class GameMenu {
 
@@ -18,7 +14,7 @@ public class GameMenu {
     private JButton buttonCampoDeBatalla;
     private JButton buttonTrascender;
     private JButton buttonLogros;
-    private JButton buttonSalir;
+    private JButton buttonCerrarSesion;
 
     private JScrollPane scrollPaneInvocaciones;
 
@@ -51,7 +47,24 @@ public class GameMenu {
                 Main.inventarioInvocaciones.add(gacha.crearInvocacion(Main.suerte, 1));
             }
         });
+
+        buttonCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.inventarioInvocaciones.clear();
+                Main.pisoTorreInfinita = 0;
+                Main.catalogoItems.clear();
+
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelGameMenu);
+                frame.setContentPane(new IniciarSesion().panelIniciarSesion);
+                frame.revalidate();
+                frame.repaint();
+            }
+        });
+
+
     }
+
 
 
     public static void main(String[] args) {

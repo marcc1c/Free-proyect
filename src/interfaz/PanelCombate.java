@@ -48,7 +48,7 @@ public class PanelCombate {
                 boolean enemigoSigueVivo = combate.turno(jugador, enemigo, textPanelRegistroCombate, false);
 
                 if (!enemigoSigueVivo) {
-                    textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "HAS GANADO\n");
+                    textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "\nHAS GANADO\n");
 
                     buttonAtacar.setVisible(false);
                     buttonHuir.setVisible(false);
@@ -63,7 +63,7 @@ public class PanelCombate {
                     boolean jugadorSigueVivo = combate.turno(enemigo, jugador, textPanelRegistroCombate, true);
 
                     if (!jugadorSigueVivo) {
-                        textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "HAS PERDIDO\n");
+                        textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "\nHAS PERDIDO\n");
 
                         buttonAtacar.setVisible(false);
                         buttonHuir.setVisible(false);
@@ -74,8 +74,21 @@ public class PanelCombate {
 
                 Tarjetas.mostrarSoloInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
                 Tarjetas.mostrarSoloInvocacion(enemigo, panelInvocacionEnemiga);
+                textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "\n");
+            }
+
+        });
+        buttonSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
+                frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
+                frame.revalidate();
+                frame.repaint();
             }
         });
+
         buttonSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

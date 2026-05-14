@@ -203,11 +203,20 @@ public class Tarjetas {
         pintarBotonUsar(buttonUsar, invocacion);
 
         JButton buttonEliminar = new JButton("Eliminar");
+        buttonEliminar.setBackground(new Color(255, 77, 94));
 
         buttonUsar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equiparInvocacion(invocacion);
+                mostrarTarjetasInventario(0, panelContenedor);
+            }
+        });
+
+        buttonEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.inventarioInvocaciones.remove(invocacion);
                 mostrarTarjetasInventario(0, panelContenedor);
             }
         });

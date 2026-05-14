@@ -32,7 +32,7 @@ public class Combate {
         if (dañoReal < 0) {
             dañoReal = 0;
         }
-        logsCombate.setText(logsCombate.getText() + dañoReal + " puntos de daño\n");
+        logsCombate.setText(logsCombate.getText() + (int)dañoReal + " puntos de daño\n");
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         if (invocacion2.getVida() < 0) {
@@ -91,14 +91,17 @@ public class Combate {
                                 entradaLoot.getCantidadMaxima() - entradaLoot.getCantidadMinima() + 1
                         ) + entradaLoot.getCantidadMinima();
 
+                        logsCombate.setText(logsCombate.getText() + "\n");
+
                         for (Items itemsJugador : Main.catalogoItems) {
                             if (itemsJugador.getId() == entradaLoot.getIdItem()) {
-                                logsCombate.setText(logsCombate.getText() + "Has recibido " + itemsJugador.getNombre() + " x " + cantidadItem + "\n");
+                                logsCombate.setText(logsCombate.getText() + "Has recibido " + itemsJugador.getNombre() + " x " + cantidadItem);
                                 itemsJugador.setCantidad(itemsJugador.getCantidad() + cantidadItem);
                             }
                         }
                     }
                 }
+                logsCombate.setText(logsCombate.getText() + "\n");
             }
         }
     }
