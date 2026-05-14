@@ -46,7 +46,7 @@ public class Combate {
             if (!esEnemigo) {
                 calcularDrop(invocacion2, logsCombate);
             }
-        }
+        }   
 
         return invocacion2ConVida;
     }

@@ -62,8 +62,10 @@ public class Tarjetas {
             }
         } else {
             for (Items item : arrayItems) {
-                JPanel tarjeta = crearTarjetaItem(item);
-                panelTarjetas.add(tarjeta);
+                if (item.getCantidad() != 0) {
+                    JPanel tarjeta = crearTarjetaItem(item);
+                    panelTarjetas.add(tarjeta);
+                }
             }
         }
 
@@ -151,7 +153,7 @@ public class Tarjetas {
         barraExperiencia.setValue((int) invocacion.getExperiencia());
         barraExperiencia.setStringPainted(true);
         barraExperiencia.setString((int) invocacion.getExperiencia() + "/" + (int) invocacion.getExperienciaMaxima());
-        barraExperiencia.setForeground(Color.BLUE);
+        barraExperiencia.setForeground(new Color(80, 120, 255));
         barraExperiencia.setBackground(new Color(45, 55, 65));
         barraExperiencia.setFont(new Font("Arial", Font.BOLD, 12));
 
