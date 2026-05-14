@@ -30,37 +30,55 @@ public class PanelCombate {
     public PanelCombate() {
         Gacha gacha = new Gacha();
         buttonSalir.setVisible(false);
-        Invocacion enemigo = gacha.crearInvocacion(Main.pisoTorreInfinita/2, Main.pisoTorreInfinita/2);
 
-        Tarjetas.crearTarjetaInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
+        Invocacion enemigo = gacha.crearInvocacion(Main.pisoTorreInfinita / 2+1, Main.pisoTorreInfinita / 2+1);
+
+        Tarjetas.mostrarSoloInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
+        Tarjetas.mostrarSoloInvocacion(enemigo, panelInvocacionEnemiga);
 
         buttonAtacar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Combate combate = new Combate();
-                String ganadoOperdido = "";
-                if (!combate.turno(Tarjetas.saberInvocacionEquipada(), enemigo, textPanelRegistroCombate, false)) {
-                    ganadoOperdido = "HAS GANADO";
-                } else if (!combate.turno(enemigo, Tarjetas.saberInvocacionEquipada(), textPanelRegistroCombate, true)) {
-                    ganadoOperdido = "HAS PERDIDO";
+
+                Invocacion jugador = Tarjetas.saberInvocacionEquipada();
+
+                boolean enemigoSigueVivo = combate.turno(jugador, enemigo, textPanelRegistroCombate, false);
+
+                if (!enemigoSigueVivo) {
+                    textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "HAS GANADO\n");
+
+                    buttonAtacar.setVisible(false);
+                    buttonHuir.setVisible(false);
+                    buttonHabilidades.setVisible(false);
+                    buttonSalir.setVisible(true);
+                } else {
+
+                    boolean jugadorSigueVivo = combate.turno(enemigo, jugador, textPanelRegistroCombate, true);
+
+                    if (!jugadorSigueVivo) {
+                        textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "HAS PERDIDO\n");
+
+                        buttonAtacar.setVisible(false);
+                        buttonHuir.setVisible(false);
+                        buttonHabilidades.setVisible(false);
+                        buttonSalir.setVisible(true);
+                    }
                 }
-                textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + ganadoOperdido);
-                buttonAtacar.setVisible(false);
-                buttonHuir.setVisible(false);
-                buttonHabilidades.setVisible(false);
-                buttonSalir.setVisible(true);
+
+                Tarjetas.mostrarSoloInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
+                Tarjetas.mostrarSoloInvocacion(enemigo, panelInvocacionEnemiga);
             }
         });
         buttonSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
                 frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
                 frame.revalidate();
                 frame.repaint();
             }
         });
-
-
     }
-}
+    }

@@ -57,22 +57,12 @@ public class Tarjetas {
 
         if (tipo == 0) {
             for (Invocacion invocacion : arrayInvocaciones) {
-                JPanel tarjeta = crearTarjetaInvocacion(invocacion, panelContenedor);
-
-                tarjeta.setPreferredSize(new Dimension(240, 330));
-                tarjeta.setMinimumSize(new Dimension(240, 330));
-                tarjeta.setMaximumSize(new Dimension(240, 330));
-
+                JPanel tarjeta = crearTarjetaInvocacionInventario(invocacion, panelContenedor);
                 panelTarjetas.add(tarjeta);
             }
         } else {
             for (Items item : arrayItems) {
                 JPanel tarjeta = crearTarjetaItem(item);
-
-                tarjeta.setPreferredSize(new Dimension(240, 330));
-                tarjeta.setMinimumSize(new Dimension(240, 330));
-                tarjeta.setMaximumSize(new Dimension(240, 330));
-
                 panelTarjetas.add(tarjeta);
             }
         }
@@ -118,7 +108,20 @@ public class Tarjetas {
         panelContenedor.repaint();
     }
 
-    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelContenedor) {
+    public static void mostrarSoloInvocacion(Invocacion invocacion, JPanel panelContenedor) {
+        panelContenedor.removeAll();
+
+        JPanel tarjeta = crearTarjetaInvocacion(invocacion);
+
+        panelContenedor.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panelContenedor.setBackground(new Color(55, 134, 219));
+        panelContenedor.add(tarjeta);
+
+        panelContenedor.revalidate();
+        panelContenedor.repaint();
+    }
+
+    public static JPanel crearTarjetaInvocacion(Invocacion invocacion) {
         Color colorBorde = obtenerColorRareza(invocacion.getRareza());
 
         JPanel tarjeta = new JPanel();
@@ -148,7 +151,7 @@ public class Tarjetas {
         barraExperiencia.setValue((int) invocacion.getExperiencia());
         barraExperiencia.setStringPainted(true);
         barraExperiencia.setString((int) invocacion.getExperiencia() + "/" + (int) invocacion.getExperienciaMaxima());
-        barraExperiencia.setForeground(Color.blue);
+        barraExperiencia.setForeground(Color.BLUE);
         barraExperiencia.setBackground(new Color(45, 55, 65));
         barraExperiencia.setFont(new Font("Arial", Font.BOLD, 12));
 
@@ -175,6 +178,28 @@ public class Tarjetas {
         labelCritico.setFont(new Font("Arial", Font.BOLD, 13));
         labelDanoCritico.setFont(new Font("Arial", Font.BOLD, 13));
 
+        tarjeta.add(labelRaza);
+        tarjeta.add(labelRareza);
+        tarjeta.add(labelNivel);
+        tarjeta.add(barraExperiencia);
+        tarjeta.add(barraVida);
+        tarjeta.add(labelDefensa);
+        tarjeta.add(labelAtaque);
+        tarjeta.add(labelCritico);
+        tarjeta.add(labelDanoCritico);
+
+        return tarjeta;
+    }
+
+    public static JPanel crearTarjetaInvocacionInventario(Invocacion invocacion, JPanel panelContenedor) {
+        JPanel tarjeta = crearTarjetaInvocacion(invocacion);
+
+        prepararTarjetaInvocacionParaInventario(tarjeta, invocacion, panelContenedor);
+
+        return tarjeta;
+    }
+
+    public static void prepararTarjetaInvocacionParaInventario(JPanel tarjeta, Invocacion invocacion, JPanel panelContenedor) {
         JButton buttonUsar = new JButton("Usar");
         pintarBotonUsar(buttonUsar, invocacion);
 
@@ -194,18 +219,11 @@ public class Tarjetas {
         panelBotones.add(buttonUsar);
         panelBotones.add(buttonEliminar);
 
-        tarjeta.add(labelRaza);
-        tarjeta.add(labelRareza);
-        tarjeta.add(labelNivel);
-        tarjeta.add(barraExperiencia);
-        tarjeta.add(barraVida);
-        tarjeta.add(labelDefensa);
-        tarjeta.add(labelAtaque);
-        tarjeta.add(labelCritico);
-        tarjeta.add(labelDanoCritico);
         tarjeta.add(panelBotones);
+    }
 
-        return tarjeta;
+    public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelContenedor) {
+        return crearTarjetaInvocacionInventario(invocacion, panelContenedor);
     }
 
     public static JPanel crearTarjetaItem(Items item) {
@@ -309,47 +327,5 @@ public class Tarjetas {
         }
 
         return color;
-    }
-
-    public static void ajustarAlturaPanel(JPanel panelGrid, JScrollPane scrollPane, int cantidadTarjetas) {
-
-        int anchoScroll = scrollPane.getViewport().getWidth();
-
-        if (anchoScroll <= 0) {
-            anchoScroll = scrollPane.getWidth();
-        }
-
-        if (anchoScroll <= 0) {
-            anchoScroll = 900;
-        }
-
-        int anchoTarjeta = 240;
-        int altoTarjeta = 330;
-        int espacioHorizontal = 20;
-        int espacioVertical = 20;
-
-        int tarjetasPorFila = (anchoScroll - espacioHorizontal) / (anchoTarjeta + espacioHorizontal);
-
-        if (tarjetasPorFila < 1) {
-            tarjetasPorFila = 1;
-        }
-
-        int filas = cantidadTarjetas / tarjetasPorFila;
-
-        if (cantidadTarjetas % tarjetasPorFila != 0) {
-            filas++;
-        }
-
-        int altoTotal = filas * (altoTarjeta + espacioVertical) + espacioVertical;
-
-        if (altoTotal < scrollPane.getHeight()) {
-            altoTotal = scrollPane.getHeight();
-        }
-
-        panelGrid.setPreferredSize(new Dimension(anchoScroll, altoTotal));
-        panelGrid.setMinimumSize(new Dimension(anchoScroll, altoTotal));
-
-        panelGrid.revalidate();
-        panelGrid.repaint();
     }
 }

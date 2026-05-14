@@ -19,7 +19,7 @@ public class Combate {
 
         }
         boolean invocacion2ConVida = true;
-        double probCritico = random.nextDouble()*100;
+        double probCritico = random.nextDouble() * 100;
         double dañoFinal = invocacion1.getAtaque();
 
         if (probCritico <= invocacion1.getProbCritico()) {
@@ -40,8 +40,6 @@ public class Combate {
         if (invocacion2.getVida() <= 0) {
             invocacion2ConVida = false;
             invocacion1.subirExperiencia(calcularExperiencia(invocacion2));
-            invocacion2.setVida(invocacion2.getVidaMaxima());
-            invocacion1.setVida(invocacion1.getVidaMaxima());
             if (!esEnemigo) {
                 calcularDrop(invocacion2, logsCombate);
             }
@@ -50,7 +48,7 @@ public class Combate {
         return invocacion2ConVida;
     }
 
-    public int calcularExperiencia(Invocacion invocacion) {
+    public double calcularExperiencia(Invocacion invocacion) {
         double multiplicadorPorRareza = 1;
 
         switch (invocacion.getRareza()) {
@@ -70,7 +68,7 @@ public class Combate {
                 multiplicadorPorRareza = 2.5;
                 break;
         }
-        return (int) Math.round(invocacion.getNivel() * multiplicadorPorRareza);
+        return invocacion.getNivel() * multiplicadorPorRareza;
     }
 
     public void calcularDrop(Invocacion invocacion, JTextPane logsCombate) {
@@ -92,7 +90,7 @@ public class Combate {
 
                         for (Items itemsJugador : Main.catalogoItems) {
                             if (itemsJugador.getId() == entradaLoot.getIdItem()) {
-                                logsCombate.setText(logsCombate.getText() + "Has recibido " + itemsJugador.getNombre() + " x " + cantidadItem);
+                                logsCombate.setText(logsCombate.getText() + "Has recibido " + itemsJugador.getNombre() + " x " + cantidadItem + "\n");
                                 itemsJugador.setCantidad(itemsJugador.getCantidad() + cantidadItem);
                             }
                         }
