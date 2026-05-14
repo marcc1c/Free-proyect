@@ -307,10 +307,6 @@ public class Tarjetas {
                 color = Color.WHITE;
                 break;
 
-            case "Común":
-                color = Color.WHITE;
-                break;
-
             case "Natural":
                 color = Color.GREEN;
                 break;
@@ -320,10 +316,6 @@ public class Tarjetas {
                 break;
 
             case "Unico":
-                color = new Color(253, 207, 98);
-                break;
-
-            case "Único":
                 color = new Color(253, 207, 98);
                 break;
 

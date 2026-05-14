@@ -7,6 +7,7 @@ import logica.Main;
 import logica.Tarjetas;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,6 +31,8 @@ public class PanelCombate {
         frame.setVisible(true);
     }
     public PanelCombate() {
+
+
         Gacha gacha = new Gacha();
         buttonSalir.setVisible(false);
 

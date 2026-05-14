@@ -74,7 +74,7 @@ public abstract class Invocacion {
     public void calcularStats(String rareza) {
 
         switch (rareza) {
-            case "Común":
+            case "Comun":
                 asignarStats(20, 5, 0, 10, 1.5);
                 break;
 
@@ -86,7 +86,7 @@ public abstract class Invocacion {
                 asignarStats(45, 9, 2, 12, 1.6);
                 break;
 
-            case "Único":
+            case "Unico":
                 asignarStats(60, 12, 3, 13, 1.6);
                 break;
 
@@ -148,7 +148,7 @@ public abstract class Invocacion {
 
         switch (this.rareza) {
 
-            case "Común":
+            case "Comun":
                 this.ataque = (this.ataque / this.multiAtaque) + 1;
                 this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 4;
                 this.defensa = (this.defensa / this.multiDefensa) + 0.6;
@@ -172,7 +172,7 @@ public abstract class Invocacion {
                 this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
                 break;
 
-            case "Único":
+            case "Unico":
                 this.ataque = (this.ataque / this.multiAtaque) + 4;
                 this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 9;
                 this.defensa = (this.defensa / this.multiDefensa) + 1.5;

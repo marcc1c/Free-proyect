@@ -16,13 +16,13 @@ public class Gacha {
         } else if (numAleatorio <= 0.6 * suerte) {
             rareza = "Extinto";
         } else if (numAleatorio <= 3.0 * suerte) {
-            rareza = "Único";
+            rareza = "Unico";
         } else if (numAleatorio <= 10.0 * suerte) {
             rareza = "Raro";
         } else if (numAleatorio <= 35.0 * (suerte * 0.7)) {
             rareza = "Natural";
         } else {
-            rareza = "Común";
+            rareza = "Comun";
         }
         return rareza;
     }
