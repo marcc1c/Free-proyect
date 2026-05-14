@@ -20,6 +20,8 @@ public class PanelCombate {
     private JButton buttonSalir;
     private JButton buttonHabilidades;
 
+    static boolean esTorreInfinita = false;
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Combate");
         frame.setContentPane(new PanelCombate().panelCombate);
@@ -52,6 +54,10 @@ public class PanelCombate {
                     buttonHuir.setVisible(false);
                     buttonHabilidades.setVisible(false);
                     buttonSalir.setVisible(true);
+                    if (esTorreInfinita) {
+                        Main.pisoTorreInfinita++;
+                    }
+                    esTorreInfinita = false;
                 } else {
 
                     boolean jugadorSigueVivo = combate.turno(enemigo, jugador, textPanelRegistroCombate, true);

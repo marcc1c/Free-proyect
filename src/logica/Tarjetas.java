@@ -163,11 +163,10 @@ public class Tarjetas {
         barraVida.setBackground(new Color(45, 55, 65));
         barraVida.setFont(new Font("Arial", Font.BOLD, 12));
 
-        JLabel labelDefensa = new JLabel("Defensa: " + invocacion.getDefensa());
-        JLabel labelAtaque = new JLabel("Ataque: " + invocacion.getAtaque());
-        JLabel labelCritico = new JLabel("Crit%: " + invocacion.getProbCritico());
-        JLabel labelDanoCritico = new JLabel("Crit DMG: " + invocacion.getDañoCritico());
-
+        JLabel labelDefensa = new JLabel("Defensa: " + (int) invocacion.getDefensa());
+        JLabel labelAtaque = new JLabel("Ataque: " + (int) invocacion.getAtaque());
+        JLabel labelCritico = new JLabel("Crit%: " + (int) invocacion.getProbCritico());
+        JLabel labelDanoCritico = new JLabel("Crit DMG: x" + String.format("%.1f", invocacion.getDañoCritico()));
         labelDefensa.setForeground(Color.WHITE);
         labelAtaque.setForeground(Color.WHITE);
         labelCritico.setForeground(Color.WHITE);

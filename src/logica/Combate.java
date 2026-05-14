@@ -35,6 +35,9 @@ public class Combate {
         logsCombate.setText(logsCombate.getText() + dañoReal + " puntos de daño\n");
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
+        if (invocacion2.getVida() < 0) {
+            invocacion2.setVida(0);
+        }
         System.out.println("Vida: " + invocacion2.getVida());
 
         if (invocacion2.getVida() <= 0) {

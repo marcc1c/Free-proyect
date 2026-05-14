@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/invocaciones/Invocacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/invocaciones/Invocacion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Combate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Combate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/IniciarSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/IniciarSesion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logica/Combate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Combate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logica/Tarjetas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Tarjetas.java" afterDir="false" />
     </list>

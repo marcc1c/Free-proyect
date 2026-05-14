@@ -1,38 +1,36 @@
 package invocaciones;
 
-import java.math.MathContext;
-
 public abstract class Invocacion {
-    
-        protected int id, nivel;
-        protected int ascension = 0;
-        protected double experiencia = 0;
-        protected double experienciaMaxima = 10;
 
+    protected int id, nivel;
+    protected int ascension = 0;
+    protected double experiencia = 0;
+    protected double experienciaMaxima = 10;
 
-        protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
-                multiProbCritico, multiDañoCritico, multiExteriencia;
-        protected String raza, rareza;
-        protected boolean equipado;
+    protected double vida, vidaMaxima, ataque, defensa, probCritico, dañoCritico, multiVida, multiAtaque, multiDefensa,
+            multiProbCritico, multiDañoCritico, multiExteriencia;
+
+    protected String raza, rareza;
+    protected boolean equipado;
 
     public Invocacion() {
     }
 
     public Invocacion(int id, int nivel, String raza, String rareza) {
+        this.id = id;
+        this.raza = raza;
+        this.rareza = rareza;
 
         calcularMultiplicadores(raza);
         calcularStats(rareza);
-        this.id = id;
-        this.nivel = nivel;
-        this.raza = raza;
-        this.rareza = rareza;
+
+        conversorNivelExp(nivel);
     }
 
     public Invocacion(String rareza, String raza, double multiExperiencia, double multiDañoCritico,
                       double multiProbCritico, double multiDefensa, double multiAtaque, double multiVida,
                       double dañoCritico, double probCritico, double defensa, double ataque, double vidaMaxima,
                       double vida, double experienciaMaxima, double experiencia, int ascension, int nivel, int id) {
-
 
         this.rareza = rareza;
         this.raza = raza;
@@ -73,27 +71,35 @@ public abstract class Invocacion {
         this.multiDañoCritico = multiDañoCritico;
     }
 
-
     public void calcularStats(String rareza) {
 
         switch (rareza) {
             case "Común":
                 asignarStats(20, 5, 0, 10, 1.5);
                 break;
+
             case "Natural":
                 asignarStats(30, 7, 1, 11, 1.5);
                 break;
+
             case "Raro":
                 asignarStats(45, 9, 2, 12, 1.6);
                 break;
+
             case "Único":
                 asignarStats(60, 12, 3, 13, 1.6);
                 break;
+
             case "Extinto":
                 asignarStats(75, 15, 4, 14, 1.7);
                 break;
+
             case "Primordial":
                 asignarStats(90, 18, 5, 15, 1.8);
+                break;
+
+            default:
+                asignarStats(20, 5, 0, 10, 1.5);
                 break;
         }
     }
@@ -104,84 +110,109 @@ public abstract class Invocacion {
             case "Ave":
                 asignarMultiplicadores(0.8, 2.8, 0.8, 1.5, 1);
                 break;
+
             case "Felino":
                 asignarMultiplicadores(1, 2, 1, 1.75, 1);
                 break;
+
             case "Insecto":
                 asignarMultiplicadores(2.2, 2.4, 2.2, 1, 1);
                 break;
+
             case "Acuatico":
                 asignarMultiplicadores(1.5, 1, 1.7, 1.5, 1);
+                break;
+
+            default:
+                asignarMultiplicadores(1, 1, 1, 1, 1);
+                break;
         }
     }
 
     public boolean subirExperiencia(double experienciaRecibida) {
         boolean subido = false;
 
-            this.experiencia += experienciaRecibida;
+        this.experiencia += experienciaRecibida;
 
-            if (this.experiencia >= this.experienciaMaxima) {
-                this.experiencia -= this.experienciaMaxima;
-                this.nivel++;
-                this.experienciaMaxima = Math.round(10 * Math.pow(this.nivel, 1.15));
-                subido = true;
-
-
-                switch (this.rareza) {
-
-                    case "Común":
-                        this.ataque = (this.ataque / this.multiAtaque) + 1;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 4;
-                        this.defensa = (this.defensa / this.multiDefensa) + 0.6;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.5;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.05;
-                        break;
-
-                    case "Natural":
-                        this.ataque = (this.ataque / this.multiAtaque) + 1;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 5;
-                        this.defensa = (this.defensa / this.multiDefensa) + 0.85;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.6;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.08;
-                        break;
-
-                    case "Raro":
-                        this.ataque = (this.ataque / this.multiAtaque) + 2;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 7;
-                        this.defensa = (this.defensa / this.multiDefensa) + 1;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.7;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
-                        break;
-
-                    case "Único":
-                        this.ataque = (this.ataque / this.multiAtaque) + 4;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 9;
-                        this.defensa = (this.defensa / this.multiDefensa) + 1.5;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.8;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
-                        break;
-
-                    case "Extinto":
-                        this.ataque = (this.ataque / this.multiAtaque) + 4;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 12;
-                        this.defensa = (this.defensa / this.multiDefensa) + 2;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 0.9;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.12;
-                        break;
-
-                    case "Primordial":
-                        this.ataque = (this.ataque / this.multiAtaque) + 5;
-                        this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 15;
-                        this.defensa = (this.defensa / this.multiDefensa) + 2.2;
-                        this.probCritico = (this.probCritico / this.multiProbCritico) + 1;
-                        this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.15;
-                        break;
-                }
-                        asignarStats(this.vidaMaxima, this.ataque, this.defensa, this.probCritico, this.dañoCritico);
-                }
-
-            return subido;
+        while (this.experiencia >= this.experienciaMaxima) {
+            this.experiencia -= this.experienciaMaxima;
+            subirNivel();
+            subido = true;
         }
+
+        return subido;
+    }
+
+    private void subirNivel() {
+        this.nivel++;
+
+        switch (this.rareza) {
+
+            case "Común":
+                this.ataque = (this.ataque / this.multiAtaque) + 1;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 4;
+                this.defensa = (this.defensa / this.multiDefensa) + 0.6;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 0.5;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.05;
+                break;
+
+            case "Natural":
+                this.ataque = (this.ataque / this.multiAtaque) + 1;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 5;
+                this.defensa = (this.defensa / this.multiDefensa) + 0.85;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 0.6;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.08;
+                break;
+
+            case "Raro":
+                this.ataque = (this.ataque / this.multiAtaque) + 2;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 7;
+                this.defensa = (this.defensa / this.multiDefensa) + 1;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 0.7;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
+                break;
+
+            case "Único":
+                this.ataque = (this.ataque / this.multiAtaque) + 4;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 9;
+                this.defensa = (this.defensa / this.multiDefensa) + 1.5;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 0.8;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.1;
+                break;
+
+            case "Extinto":
+                this.ataque = (this.ataque / this.multiAtaque) + 4;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 12;
+                this.defensa = (this.defensa / this.multiDefensa) + 2;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 0.9;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.12;
+                break;
+
+            case "Primordial":
+                this.ataque = (this.ataque / this.multiAtaque) + 5;
+                this.vidaMaxima = (this.vidaMaxima / this.multiVida) + 15;
+                this.defensa = (this.defensa / this.multiDefensa) + 2.2;
+                this.probCritico = (this.probCritico / this.multiProbCritico) + 1;
+                this.dañoCritico = (this.dañoCritico / this.multiDañoCritico) + 0.15;
+                break;
+        }
+
+        asignarStats(this.vidaMaxima, this.ataque, this.defensa, this.probCritico, this.dañoCritico);
+
+        this.experienciaMaxima = Math.round(10 * Math.pow(this.nivel, 1.15));
+    }
+
+    public void conversorNivelExp(int nivelObjetivo) {
+        if (nivelObjetivo < 1) {
+            nivelObjetivo = 1;
+        }
+
+        while (this.nivel < nivelObjetivo) {
+            subirNivel();
+        }
+
+        this.experiencia = 0;
+    }
 
     @Override
     public String toString() {
@@ -190,6 +221,7 @@ public abstract class Invocacion {
                 ", nivel=" + nivel +
                 ", ascension=" + ascension +
                 ", experiencia=" + experiencia +
+                ", experienciaMaxima=" + experienciaMaxima +
                 ", vida=" + vida +
                 ", vidaMaxima=" + vidaMaxima +
                 ", ataque=" + ataque +
