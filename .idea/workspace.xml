@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5060df-81dd-4f16-b423-697bfbbafa2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/interfaz/NivelCampana.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaz/NivelCampana.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/invocaciones/Invocacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/invocaciones/Invocacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Free-proyect/logica/Gacha.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Free-proyect/logica/Gacha.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PanelCombate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invocaciones/Invocacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Gacha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Gacha.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logica/Tarjetas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logica/Tarjetas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/MenuCampoBatalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/menuCampana.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PisoCampana.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaz/menuCampana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/PisoCampana.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

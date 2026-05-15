@@ -1,6 +1,5 @@
 package interfaz;
 
-import logica.Combate;
 import logica.Main;
 
 import javax.swing.*;
@@ -32,6 +31,16 @@ public class MenuCampoBatalla {
                 frame.revalidate();
                 frame.repaint();
                 PanelCombate.esTorreInfinita = true;
+            }
+        });
+
+        buttonCampaña.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCampoBatalla);
+                frame.setContentPane(new PisoCampana().panelMenuCampana);
+                frame.revalidate();
+                frame.repaint();
             }
         });
         buttonVolver.addActionListener(new ActionListener() {
