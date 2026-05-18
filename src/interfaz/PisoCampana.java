@@ -24,16 +24,16 @@ public class PisoCampana {
     }
 
     public PisoCampana() {
-        if (Main.pisoCampana <= 2) {
+        if (Main.pisoCampana < 2) {
             buttonPiso2.setEnabled(false);
         }
-        if (Main.pisoCampana <= 3) {
+        if (Main.pisoCampana < 3) {
             buttonPiso3.setEnabled(false);
         }
-        if (Main.pisoCampana <= 4) {
+        if (Main.pisoCampana < 4) {
             buttonPiso4.setEnabled(false);
         }
-        if (Main.pisoCampana <= 5) {
+        if (Main.pisoCampana < 5) {
             buttonPiso5.setEnabled(false);
         }
 
@@ -43,7 +43,6 @@ public class PisoCampana {
                 abrirNiveles(1);
             }
         });
-
         buttonPiso2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,8 +78,6 @@ public class PisoCampana {
                 frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
                 frame.revalidate();
                 frame.repaint();
-
-                buttonPiso2.isDisplayable();
             }
         });
 

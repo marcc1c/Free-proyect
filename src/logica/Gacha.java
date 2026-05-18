@@ -45,23 +45,53 @@ public class Gacha {
     }
 
     public Invocacion crearInvocacion(int suerte, int nivel) {
+        String raza = determinarRaza();
+        String rareza = determinarRareza(suerte);
+
+        return crearInvocacion(nivel, raza, rareza);
+    }
+
+
+    public Invocacion crearInvocacion(int nivel, String raza, String rareza) {
         Invocacion invocacion = null;
 
-        switch (determinarRaza()) {
+
+        switch (raza) {
             case "Ave":
-                invocacion = new Ave(0, nivel, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Ave(0, nivel, raza, rareza);
                 break;
 
             case "Felino":
-                invocacion = new Felino(0, nivel, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Felino(0, nivel, raza, rareza);
                 break;
 
             case "Acuatico":
-                invocacion = new Acuatico(0, nivel, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Acuatico(0, nivel, raza, rareza);
                 break;
 
             case "Insecto":
-                invocacion = new Insecto(0, nivel, determinarRaza(), determinarRareza(suerte));
+                invocacion = new Insecto(0, nivel, raza, rareza);
+                break;
+        }
+        return invocacion;
+    }
+
+    public Invocacion crearInvocacion(int nivel, String rareza) {
+        Invocacion invocacion = null;
+        String raza = determinarRaza();
+
+        switch (raza) {
+            case "Ave":
+                invocacion = new Ave(0, nivel, raza, rareza);
+                break;
+            case "Felino":
+                invocacion = new Felino(0, nivel, raza, rareza);
+                break;
+            case "Acuatico":
+                invocacion = new Acuatico(0, nivel, raza, rareza);
+                break;
+            case "Insecto":
+                invocacion = new Insecto(0, nivel, raza, rareza);
                 break;
         }
         return invocacion;

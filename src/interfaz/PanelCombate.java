@@ -2,12 +2,10 @@ package interfaz;
 
 import invocaciones.Invocacion;
 import logica.Combate;
-import logica.Gacha;
 import logica.Main;
 import logica.Tarjetas;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,25 +19,23 @@ public class PanelCombate {
     private JButton buttonSalir;
     private JButton buttonHabilidades;
 
-    static boolean esTorreInfinita = false;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Combate");
-        frame.setContentPane(new PanelCombate().panelCombate);
+        frame.setContentPane(new PanelCombate(new Invocacion() {}, false, 1, 1).panelCombate);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
-    public PanelCombate() {
 
+    public PanelCombate(Invocacion enemigo, boolean esTorreInfinita, int nivelCampana, int pisoCampana) {
 
-        Gacha gacha = new Gacha();
         buttonSalir.setVisible(false);
 
-        Invocacion enemigo = gacha.crearInvocacion(Main.pisoTorreInfinita / 2+1, Main.pisoTorreInfinita / 2+1);
 
         Tarjetas.mostrarSoloInvocacion(Tarjetas.saberInvocacionEquipada(), panelTuInvocacion);
         Tarjetas.mostrarSoloInvocacion(enemigo, panelInvocacionEnemiga);
+
 
         buttonAtacar.addActionListener(new ActionListener() {
             @Override
@@ -57,12 +53,21 @@ public class PanelCombate {
                     buttonHuir.setVisible(false);
                     buttonHabilidades.setVisible(false);
                     buttonSalir.setVisible(true);
+
                     if (esTorreInfinita) {
                         Main.pisoTorreInfinita++;
-                    }
-                    esTorreInfinita = false;
-                } else {
+                    } else {
+                        if (Main.pisoCampana == pisoCampana && nivelCampana == Main.nivelCampana) {
+                            Main.nivelCampana++;
 
+                            if (Main.nivelCampana > 10) {
+                                Main.nivelCampana = 1;
+                                Main.pisoCampana++;
+                            }
+                        }
+                    }
+
+                } else {
                     boolean jugadorSigueVivo = combate.turno(enemigo, jugador, textPanelRegistroCombate, true);
 
                     if (!jugadorSigueVivo) {
@@ -79,28 +84,24 @@ public class PanelCombate {
                 Tarjetas.mostrarSoloInvocacion(enemigo, panelInvocacionEnemiga);
                 textPanelRegistroCombate.setText(textPanelRegistroCombate.getText() + "\n");
             }
-
         });
         buttonSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (esTorreInfinita) {
                 Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
                 frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
                 frame.revalidate();
                 frame.repaint();
-            }
-        });
-
-        buttonSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
-                frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
-                frame.revalidate();
-                frame.repaint();
+            } else {
+                    Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCombate);
+                        frame.setContentPane(new PisoCampana().panelMenuCampana);
+                    frame.revalidate();
+                    frame.repaint();
+                }
             }
         });
     }
-    }
+}

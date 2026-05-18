@@ -105,5 +105,35 @@ public class Combate {
             }
         }
     }
-}
+
+    private Invocacion crearEnemigoCampana(int piso, int nivelDelPiso, String rareza) {
+        Gacha gacha = new Gacha();
+
+        int[][] rangosPorPiso = {
+                {1, 3},
+                {5, 7},
+                {10, 12},
+                {13, 15},
+                {16, 18},
+                {23, 25}
+        };
+
+        int nivelDeLaInvocacion = 1;
+
+        int nivelMinimo = rangosPorPiso[piso - 1][0];
+        int nivelMaximo = rangosPorPiso[piso - 1][1];
+        int nivelMedio = (int) Math.round((nivelMinimo + nivelMaximo) / 2.0);
+
+        if (nivelDelPiso <= 3) {
+            nivelDeLaInvocacion = nivelMinimo;
+        } else if (nivelDelPiso <= 7) {
+            nivelDeLaInvocacion = nivelMedio;
+        } else {
+            nivelDeLaInvocacion = nivelMaximo;
+        }
+
+        Invocacion enemigo = gacha.crearInvocacion(nivelDeLaInvocacion, rareza);
+
+        return enemigo;
+    }
 

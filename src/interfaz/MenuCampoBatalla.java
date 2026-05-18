@@ -1,5 +1,7 @@
 package interfaz;
 
+import invocaciones.Invocacion;
+import logica.Gacha;
 import logica.Main;
 
 import javax.swing.*;
@@ -26,14 +28,19 @@ public class MenuCampoBatalla {
         buttonTorreInfinita.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Gacha gacha = new Gacha();
+
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCampoBatalla);
-                frame.setContentPane(new PanelCombate().panelCombate);
+
+                Invocacion invocacion = gacha.crearInvocacion(
+                        Main.pisoTorreInfinita / 2 + 1,
+                        Main.pisoTorreInfinita / 2 + 1
+                );
+                frame.setContentPane(new PanelCombate(invocacion, true, 0,0 ).panelCombate);
                 frame.revalidate();
                 frame.repaint();
-                PanelCombate.esTorreInfinita = true;
             }
         });
-
         buttonCampaña.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

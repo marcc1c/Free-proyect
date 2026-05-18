@@ -116,7 +116,7 @@ public abstract class Invocacion {
                 break;
 
             case "Insecto":
-                asignarMultiplicadores(2.2, 2.4, 2.2, 1, 1);
+                asignarMultiplicadores(1.2, 2.4, 2.2, 1, 1);
                 break;
 
             case "Acuatico":
