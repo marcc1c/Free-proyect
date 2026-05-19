@@ -32,7 +32,7 @@ public class Combate {
         if (dañoReal < 0) {
             dañoReal = 0;
         }
-        logsCombate.setText(logsCombate.getText() + (int)dañoReal + " puntos de daño\n");
+        logsCombate.setText(logsCombate.getText() + (int) dañoReal + " puntos de daño\n");
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         if (invocacion2.getVida() < 0) {
@@ -46,7 +46,7 @@ public class Combate {
             if (!esEnemigo) {
                 calcularDrop(invocacion2, logsCombate);
             }
-        }   
+        }
 
         return invocacion2ConVida;
     }
@@ -106,8 +106,9 @@ public class Combate {
         }
     }
 
-    private Invocacion crearEnemigoCampana(int piso, int nivelDelPiso, String rareza) {
+    public Invocacion crearEnemigoCampana(int piso, int nivelDelPiso) {
         Gacha gacha = new Gacha();
+
 
         int[][] rangosPorPiso = {
                 {1, 3},
@@ -118,11 +119,13 @@ public class Combate {
                 {23, 25}
         };
 
+        String [] rarezas = {"Comun", "Natural", "Raro", "Unico", "Extinto", "Primordial"};
+
         int nivelDeLaInvocacion = 1;
 
         int nivelMinimo = rangosPorPiso[piso - 1][0];
         int nivelMaximo = rangosPorPiso[piso - 1][1];
-        int nivelMedio = (int) Math.round((nivelMinimo + nivelMaximo) / 2.0);
+        int nivelMedio = nivelMaximo - nivelMinimo + nivelMinimo;
 
         if (nivelDelPiso <= 3) {
             nivelDeLaInvocacion = nivelMinimo;
@@ -132,8 +135,8 @@ public class Combate {
             nivelDeLaInvocacion = nivelMaximo;
         }
 
-        Invocacion enemigo = gacha.crearInvocacion(nivelDeLaInvocacion, rareza);
+        return gacha.crearInvocacion(nivelDeLaInvocacion, rareza);
 
-        return enemigo;
     }
+}
 

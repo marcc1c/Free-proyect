@@ -1,6 +1,7 @@
 package interfaz;
 
 import invocaciones.Invocacion;
+import logica.Combate;
 import logica.Gacha;
 import logica.Main;
 import logica.Tarjetas;
@@ -22,6 +23,7 @@ public class NivelCampana {
     private JButton buttonNivel9;
     private JButton buttonNivel10;
     public JPanel panelPisoCampana;
+    int nivelCampana;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("nivelCampana");
@@ -33,47 +35,60 @@ public class NivelCampana {
 
     public NivelCampana(int piso) {
         Gacha gacha = new Gacha();
-
         if (Main.pisoCampana == piso) {
             if (Main.nivelCampana < 2) {
+                nivelCampana = 1;
                 buttonNivel2.setEnabled(false);
             }
             if (Main.nivelCampana < 3) {
                 buttonNivel3.setEnabled(false);
+                nivelCampana = 2;
             }
             if (Main.nivelCampana < 3) {
                 buttonNivel3.setEnabled(false);
+                nivelCampana = 3;
             }
             if (Main.nivelCampana < 4) {
                 buttonNivel4.setEnabled(false);
             }
             if (Main.nivelCampana < 5) {
                 buttonNivel5.setEnabled(false);
+                nivelCampana = 4;
             }
             if (Main.nivelCampana < 6) {
+                nivelCampana = 5;
                 buttonNivel6.setEnabled(false);
             }
             if (Main.nivelCampana < 7) {
+                nivelCampana = 6;
                 buttonNivel7.setEnabled(false);
             }
             if (Main.nivelCampana < 8) {
+                nivelCampana = 7;
                 buttonNivel8.setEnabled(false);
             }
             if (Main.nivelCampana < 9) {
+                nivelCampana = 8;
                 buttonNivel9.setEnabled(false);
             }
             if (Main.nivelCampana < 10) {
+                nivelCampana = 9;
                 buttonNivel10.setEnabled(false);
+            }
+            if (Main.nivelCampana >= 10) {
+                nivelCampana = 1;
             }
         }
             buttonNivel1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) ((piso-1) * 5), "Comun");
+                    Combate combate = new Combate();
+                    Invocacion enemigo = combate.crearEnemigoCampana(piso, nivelCampana, );
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
                     frame.setContentPane(new PanelCombate(enemigo, false, 1, piso).panelCombate);
                     frame.revalidate();
                     frame.repaint();
+
                 }
             });
 
