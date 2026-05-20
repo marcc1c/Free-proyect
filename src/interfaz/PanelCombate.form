@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfaz.PanelCombate">
+  <grid id="27dc6" binding="panelCombate" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-13138213"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="b578a" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <font name="Rakkas" size="48" style="1"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="0"/>
+          <text value="Combate"/>
+        </properties>
+      </component>
+      <grid id="23c37" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-13138213"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a7f1d" class="javax.swing.JButton" binding="buttonAtacar">
+            <constraints/>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Atacar"/>
+            </properties>
+          </component>
+          <component id="2a0d" class="javax.swing.JButton" binding="buttonHabilidades">
+            <constraints/>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Habilidades"/>
+            </properties>
+          </component>
+          <component id="2bdd5" class="javax.swing.JButton" binding="buttonHuir">
+            <constraints/>
+            <properties>
+              <background color="-45730"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Huir"/>
+            </properties>
+          </component>
+          <component id="b8643" class="javax.swing.JButton" binding="buttonSalir">
+            <constraints/>
+            <properties>
+              <background color="-45730"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <hideActionText value="false"/>
+              <text value="Salir"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="89316" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <margin top="0" left="0" bottom="0" right="0"/>
+  <constraints border-constraint="Center"/>
+  <properties>
+    <background color="-13138213"/>
+  </properties>
+  <border type="none"/>
+  <children>
+
+    <grid id="panelSuperiorInvocaciones" layout-manager="FlowLayout" hgap="15" vgap="10" flow-align="1">
+      <constraints>
+        <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="6" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <preferred-size width="-1" height="360"/>
+        </grid>
+      </constraints>
+      <properties>
+        <background color="-13138213"/>
+      </properties>
+      <border type="none"/>
+      <children>
+
+        <grid id="e8a39" binding="panelTuInvocacion" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <constraints/>
+          <properties>
+            <background color="-13138213"/>
+          </properties>
+          <border type="none"/>
+          <children/>
+        </grid>
+
+        <grid id="dc352" binding="panelInvocacionEnemiga" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <constraints/>
+          <properties>
+            <background color="-13138213"/>
+          </properties>
+          <border type="none"/>
+          <children/>
+        </grid>
+
+      </children>
+    </grid>
+
+    <component id="530ba" class="javax.swing.JTextPane" binding="textPanelRegistroCombate">
+      <constraints>
+        <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <preferred-size width="150" height="250"/>
+        </grid>
+      </constraints>
+      <properties>
+        <background color="-16112328"/>
+        <editable value="false"/>
+        <enabled value="true"/>
+        <font name="Verdana" size="18"/>
+        <foreground color="-1"/>
+      </properties>
+    </component>
+
+  </children>
+</grid>    </children>
+  </grid>
+</form>

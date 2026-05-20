@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfaz.Registrar">
+  <grid id="27dc6" binding="panelRegistrar" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="412"/>
+    </constraints>
+    <properties>
+      <background color="-13138213"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="b39e6" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <font name="Rakkas" size="48" style="1"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="0"/>
+          <text value="Crear cuenta"/>
+        </properties>
+      </component>
+      <grid id="cb9a5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-13138213"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="e0cd3" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <background color="-13138213"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="1593b" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font name="Vollkorn" size="18" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="Usuario"/>
+                </properties>
+              </component>
+              <component id="be202" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font name="Vollkorn" size="18" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="Contraseña"/>
+                </properties>
+              </component>
+              <component id="29108" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+                <constraints>
+                  <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+              </component>
+              <component id="81363" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                <constraints>
+                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+              </component>
+              <component id="28ae9" class="javax.swing.JButton" binding="buttonRegistrar">
+                <constraints>
+                  <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16112328"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <focusable value="false"/>
+                  <font name="Vollkorn" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Crear cuenta"/>
+                </properties>
+              </component>
+              <vspacer id="e3c35">
+                <constraints>
+                  <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="70"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="60e24" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Vollkorn" size="18" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="¿Ya tienes cuenta?"/>
+                </properties>
+              </component>
+              <component id="5920e" class="javax.swing.JButton" binding="buttonIniciarSesion">
+                <constraints>
+                  <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16112328"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <focusPainted value="false"/>
+                  <font name="Vollkorn" size="18" style="1"/>
+                  <foreground color="-1"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Iniciar sesión"/>
+                </properties>
+              </component>
+              <vspacer id="95222">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="de7bd" class="javax.swing.JLabel" binding="labelAviso">
+                <constraints>
+                  <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

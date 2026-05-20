@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfaz.menuCampana">
+  <grid id="27dc6" binding="panelMenuCampana" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="443"/>
+    </constraints>
+    <properties>
+      <background color="-13138213"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="7cbd9" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <font name="Rakkas" size="48" style="1"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="0"/>
+          <text value="Campo de batalla"/>
+        </properties>
+      </component>
+      <grid id="f37ab" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="5" left="5" bottom="5" right="5"/>
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-13138213"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b4186" class="javax.swing.JButton" binding="buttonPiso2">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Piso 2"/>
+            </properties>
+          </component>
+          <component id="5fa47" class="javax.swing.JButton" binding="buttonPiso3">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Piso 3"/>
+            </properties>
+          </component>
+          <vspacer id="4113f">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <vspacer id="e9264">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <component id="a8880" class="javax.swing.JButton" binding="buttonPiso1">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Piso 1"/>
+            </properties>
+          </component>
+          <component id="249c8" class="javax.swing.JButton" binding="buttonPiso4">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Piso 4"/>
+            </properties>
+          </component>
+          <component id="c3748" class="javax.swing.JButton" binding="buttonPiso5">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Piso 5"/>
+            </properties>
+          </component>
+          <component id="425b4" class="javax.swing.JButton" binding="buttonVolver">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="300" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16112328"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <focusable value="false"/>
+              <font name="Vollkorn" size="18" style="1"/>
+              <foreground color="-1"/>
+              <text value="Volver"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

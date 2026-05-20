@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gacha Orb Reveal</title>
+  <style>
+    :root {
+      --bg: #050b18;
+      --blue: #3A9BFF;
+      --light-blue: #55C7FF;
+      --text: #EAF3FF;
+      --rarity: #FF4D5E;
+      --rarity-soft: rgba(255, 77, 94, .24);
+      --face-x: 0px;
+      --face-y: 0px;
+      --face-scale: 1;
+      --orb-x: 0px;
+      --orb-y: 0px;
+      --orb-scale: 1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(58,155,255,.16), transparent 26%),
+        radial-gradient(circle at 50% 70%, rgba(0,30,45,.92), transparent 50%),
+        var(--bg);
+    }
+
+    .scene {
+      width: min(94vw, 900px);
+      display: grid;
+      justify-items: center;
+      gap: 22px;
+      padding: 24px;
+    }
+
+    .stage {
+      position: relative;
+      width: min(82vw, 520px);
+      aspect-ratio: 1;
+      animation: idle 3.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(58,155,255,.35));
+    }
+
+    .stage.charging {
+      filter:
+        drop-shadow(0 0 18px rgba(58,155,255,.45))
+        drop-shadow(0 0 36px rgba(85,199,255,.22));
+    }
+
+    .result,
+    .piece,
+    .energy,
+    .shockwave,
+    .flash,
+    .cracks,
+    .sparks {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .result {
+      z-index: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .result-inner {
+      position: relative;
+      width: 64%;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity .95s ease, transform 1.25s ease;
+    }
+
+    .result-glow,
+    .veil {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .result-glow {
+      inset: 8%;
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(.88);
+      background: radial-gradient(circle, rgba(255,255,255,.18), var(--rarity-soft) 28%, transparent 72%);
+      transition: opacity 1s ease, filter 1.2s ease, transform 1.2s ease;
+    }
+
+    .target {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transform: translate(var(--face-x), var(--face-y)) scale(calc(var(--face-scale) * 1.035));
+      filter: blur(16px) brightness(.82) saturate(1.05);
+      transition: opacity 1.1s ease, filter 1.45s ease, transform 1.45s cubic-bezier(.18,.82,.2,1);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .veil {
+      z-index: 3;
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(8px);
+      background: radial-gradient(circle, rgba(255,255,255,.26), rgba(255,255,255,.1) 18%, rgba(5,11,24,.12) 44%, transparent 72%);
+      transition: opacity .8s ease, filter 1.2s ease;
+    }
+
+    .stage.revealed .result-inner,
+    .stage.revealed .result-glow,
+    .stage.revealed .target,
+    .stage.revealed .veil {
+      opacity: 1;
+    }
+
+    .stage.revealed .result-inner,
+    .stage.revealed .result-glow,
+    .stage.revealed .target {
+      transform: scale(1);
+    }
+
+    .stage.revealed .target {
+      transform: translate(var(--face-x), var(--face-y)) scale(var(--face-scale));
+    }
+
+    .stage.revealed .result-glow,
+    .stage.revealed .veil {
+      filter: blur(0);
+    }
+
+    .stage.revealed .target {
+      filter:
+        blur(0)
+        brightness(1.08)
+        saturate(1.08)
+        drop-shadow(0 0 18px var(--rarity-soft))
+        drop-shadow(0 0 34px var(--rarity-soft));
+    }
+
+    .piece {
+      z-index: 4;
+      transform-origin: 50% 50%;
+      transition:
+        transform 2.2s cubic-bezier(.15,.82,.18,1),
+        opacity 2.2s ease,
+        filter 2.2s ease;
+    }
+
+    .piece img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: 50% 50%;
+      transform: translate(var(--orb-x), var(--orb-y)) scale(var(--orb-scale));
+      transform-origin: 50% 50%;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .p1 { clip-path: polygon(0 0, 35% 0, 50% 50%, 0 100%); }
+    .p2 { clip-path: polygon(35% 0, 65% 0, 50% 50%); }
+    .p3 { clip-path: polygon(65% 0, 100% 0, 100% 100%, 50% 50%); }
+    .p4 { clip-path: polygon(0 100%, 50% 50%, 35% 100%); }
+    .p5 { clip-path: polygon(35% 100%, 50% 50%, 65% 100%); }
+    .p6 { clip-path: polygon(65% 100%, 50% 50%, 100% 100%); }
+
+    .stage.opening .p1 { transform: translate(-16px,-6px) rotate(-2deg); }
+    .stage.opening .p2 { transform: translate(0,-24px) rotate(1deg); }
+    .stage.opening .p3 { transform: translate(16px,-6px) rotate(2deg); }
+    .stage.opening .p4 { transform: translate(-14px,16px) rotate(2deg); }
+    .stage.opening .p5 { transform: translate(0,20px) rotate(-1deg); }
+    .stage.opening .p6 { transform: translate(14px,16px) rotate(-2deg); }
+
+    .stage.breaking .p1 { transform: translate(-118px,-82px) rotate(-16deg) scale(.98); opacity: .62; }
+    .stage.breaking .p2 { transform: translate(0,-154px) rotate(8deg) scale(.96); opacity: .60; }
+    .stage.breaking .p3 { transform: translate(118px,-82px) rotate(16deg) scale(.98); opacity: .62; }
+    .stage.breaking .p4 { transform: translate(-114px,88px) rotate(15deg) scale(.96); opacity: .58; }
+    .stage.breaking .p5 { transform: translate(0,152px) rotate(-8deg) scale(.96); opacity: .56; }
+    .stage.breaking .p6 { transform: translate(114px,88px) rotate(-15deg) scale(.96); opacity: .58; }
+
+    .stage.revealed .piece {
+      opacity: 0;
+      filter: blur(6px);
+      transition-delay: .25s;
+    }
+
+    .cracks {
+      z-index: 6;
+      opacity: 0;
+      filter: drop-shadow(0 0 8px rgba(85,199,255,.95));
+      transition: opacity 1s ease, filter 1s ease;
+    }
+
+    .crack-line {
+      fill: none;
+      stroke: rgba(234,243,255,.92);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+    }
+
+    .stage.opening .cracks,
+    .stage.breaking .cracks {
+      opacity: 1;
+    }
+
+    .stage.opening .crack-line,
+    .stage.breaking .crack-line {
+      animation: drawCrack 1.35s ease forwards;
+    }
+
+    .stage.revealed .cracks {
+      opacity: 0;
+      filter: blur(8px) drop-shadow(0 0 8px var(--rarity));
+    }
+
+    .energy {
+      inset: 12%;
+      z-index: 2;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(.65);
+      background: radial-gradient(circle, rgba(255,255,255,.24), var(--rarity-soft) 20%, transparent 62%);
+    }
+
+    .stage.charging .energy {
+      opacity: 1;
+      animation: charge 1.2s ease-in-out infinite;
+    }
+
+    .shockwave {
+      inset: 17%;
+      z-index: 2;
+      border: 2px solid rgba(85,199,255,.8);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .stage.breaking .shockwave {
+      animation: shock 1.3s ease-out forwards;
+    }
+
+    .flash {
+      inset: 22%;
+      z-index: 3;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(.4);
+      background: radial-gradient(circle, rgba(255,255,255,.82), var(--rarity-soft) 28%, transparent 70%);
+    }
+
+    .stage.revealed .flash {
+      animation: flash .95s ease-out forwards;
+    }
+
+    .sparks { z-index: 7; opacity: 0; }
+    .stage.breaking .sparks { opacity: 1; }
+
+    .spark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--rarity);
+      box-shadow: 0 0 14px var(--rarity);
+      transform: translate(-50%, -50%);
+      animation: spark 1.4s ease-out forwards;
+    }
+
+    .s1 { --x: -160px; --y: -90px; animation-delay: .10s; }
+    .s2 { --x: 145px; --y: -105px; animation-delay: .16s; }
+    .s3 { --x: -170px; --y: 70px; animation-delay: .22s; }
+    .s4 { --x: 155px; --y: 80px; animation-delay: .14s; }
+    .s5 { --x: 0px; --y: -170px; animation-delay: .25s; }
+    .s6 { --x: 0px; --y: 160px; animation-delay: .20s; }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+    }
+
+    button,
+    select {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    button {
+      color: #061B2A;
+      background: linear-gradient(135deg, var(--light-blue), var(--blue));
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(58,155,255,.2);
+      transition: transform .16s ease, filter .16s ease;
+    }
+
+    button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+    button.secondary,
+    select {
+      color: var(--text);
+      background: rgba(234,243,255,.08);
+      border: 1px solid rgba(85,199,255,.3);
+      outline: none;
+    }
+
+    .hint {
+      margin: 0;
+      max-width: 780px;
+      text-align: center;
+      color: rgba(234,243,255,.72);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    @keyframes idle {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.01); }
+    }
+
+    @keyframes drawCrack { to { stroke-dashoffset: 0; } }
+
+    @keyframes shock {
+      0% { opacity: .85; transform: scale(.55); }
+      100% { opacity: 0; transform: scale(1.95); }
+    }
+
+    @keyframes charge {
+      0%, 100% { opacity: .36; transform: scale(.65); }
+      50% { opacity: .78; transform: scale(.9); }
+    }
+
+    @keyframes flash {
+      0% { opacity: 0; transform: scale(.35); }
+      30% { opacity: .72; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1.7); }
+    }
+
+    @keyframes spark {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.15); }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div class="stage" id="stage">
+      <div class="result">
+        <div class="result-inner">
+          <div class="result-glow"></div>
+          <img id="resultEmblem" class="target" src="assets/primordial/cara_invocacion_primordial.svg" alt="Rareza revelada" />
+          <div class="veil"></div>
+        </div>
+      </div>
+
+      <div class="energy"></div>
+      <div class="shockwave"></div>
+      <div class="flash"></div>
+
+      <svg class="cracks" viewBox="0 0 100 100" aria-hidden="true">
+        <path class="crack-line" d="M50 50 L35 0" />
+        <path class="crack-line" d="M50 50 L65 0" />
+        <path class="crack-line" d="M50 50 L0 100" />
+        <path class="crack-line" d="M50 50 L35 100" />
+        <path class="crack-line" d="M50 50 L65 100" />
+        <path class="crack-line" d="M50 50 L100 100" />
+      </svg>
+
+      <div class="sparks" aria-hidden="true">
+        <span class="spark s1"></span>
+        <span class="spark s2"></span>
+        <span class="spark s3"></span>
+        <span class="spark s4"></span>
+        <span class="spark s5"></span>
+        <span class="spark s6"></span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <select id="initialRaritySelect" title="Calidad inicial del orbe">
+        <option value="Común" selected>Inicial: Común</option>
+        <option value="Natural">Inicial: Natural</option>
+        <option value="Raro">Inicial: Raro</option>
+        <option value="Único">Inicial: Único</option>
+        <option value="Extinto">Inicial: Extinto</option>
+        <option value="Primordial">Inicial: Primordial</option>
+      </select>
+
+      <select id="finalRaritySelect" title="Calidad revelada">
+        <option value="Común">Final: Común</option>
+        <option value="Natural">Final: Natural</option>
+        <option value="Raro">Final: Raro</option>
+        <option value="Único">Final: Único</option>
+        <option value="Extinto">Final: Extinto</option>
+        <option value="Primordial" selected>Final: Primordial</option>
+      </select>
+
+      <button type="button" id="btnSummon">Invocar</button>
+      <button type="button" id="btnReset" class="secondary">Reiniciar</button>
+    </div>
+
+    <p class="hint">Puedes elegir la calidad inicial del orbe y la calidad final revelada. Al revelarse, los fragmentos rotos se desvanecen.</p>
+  </main>
+
+  <script>
+    var stage = document.getElementById("stage");
+    var resultEmblem = document.getElementById("resultEmblem");
+    var initialRaritySelect = document.getElementById("initialRaritySelect");
+    var finalRaritySelect = document.getElementById("finalRaritySelect");
+    var btnSummon = document.getElementById("btnSummon");
+    var btnReset = document.getElementById("btnReset");
+    var timers = [];
+    var isAnimating = false;
+
+    var rarities = {
+      "Común": { color: "#EAF3FF", soft: "rgba(234,243,255,.20)", orb: "assets/comun/orbe_invocacion_comun.svg", face: "assets/comun/cara_invocacion_comun.svg", x: "0px", y: "0px", scale: "1", orbX: "0px", orbY: "0px", orbScale: "1" },
+      "Natural": { color: "#4ADE80", soft: "rgba(74,222,128,.20)", orb: "assets/natural/orbe_invocacion_natural.svg", face: "assets/natural/cara_invocacion_natural.svg", x: "0px", y: "0px", scale: "1", orbX: "0px", orbY: "0px", orbScale: "1" },
+      "Raro": { color: "#3A9BFF", soft: "rgba(58,155,255,.24)", orb: "assets/raro/orbe_invocacion_raro.svg", face: "assets/raro/cara_invocacion_raro.svg", x: "0px", y: "0px", scale: "1", orbX: "0px", orbY: "0px", orbScale: "1" },
+      "Único": { color: "#FDCF62", soft: "rgba(253,207,98,.24)", orb: "assets/unico/orbe_invocacion_unico.svg", face: "assets/unico/cara_invocacion_unico.svg", x: "0px", y: "0px", scale: "1", orbX: "0px", orbY: "0px", orbScale: "1" },
+      "Extinto": { color: "#FF8A1F", soft: "rgba(255,138,31,.24)", orb: "assets/extinto/orbe_invocacion_extinto.svg", face: "assets/extinto/cara_invocacion_extinto.svg", x: "0px", y: "0px", scale: "1", orbX: "0px", orbY: "0px", orbScale: "1" },
+      "Primordial": { color: "#FF4D5E", soft: "rgba(255,77,94,.24)", orb: "assets/primordial/orbe_invocacion_primordial.svg", face: "assets/primordial/cara_invocacion_primordial.svg", x: "4px", y: "0px", scale: "1", orbX: "4px", orbY: "0px", orbScale: "1" }
+    };
+
+    function createPieces() {
+      var i = 1;
+
+      while (i <= 6) {
+        var piece = document.createElement("div");
+        var image = document.createElement("img");
+
+        piece.className = "piece p" + i;
+        image.alt = "";
+        image.setAttribute("aria-hidden", "true");
+
+        piece.appendChild(image);
+        stage.appendChild(piece);
+        i = i + 1;
+      }
+    }
+
+    function setInitialRarity(name) {
+      var rarity = rarities[name];
+      var images = stage.querySelectorAll(".piece img");
+      var i = 0;
+
+      if (!rarity) {
+        return;
+      }
+
+      document.documentElement.style.setProperty("--orb-x", rarity.orbX || "0px");
+      document.documentElement.style.setProperty("--orb-y", rarity.orbY || "0px");
+      document.documentElement.style.setProperty("--orb-scale", rarity.orbScale || "1");
+
+      while (i < images.length) {
+        images[i].src = rarity.orb;
+        i = i + 1;
+      }
+    }
+
+    function setFinalRarity(name) {
+      var rarity = rarities[name];
+
+      if (rarity) {
+        document.documentElement.style.setProperty("--rarity", rarity.color);
+        document.documentElement.style.setProperty("--rarity-soft", rarity.soft);
+        resultEmblem.src = rarity.face;
+        resultEmblem.alt = "Emblema de " + name;
+        document.documentElement.style.setProperty("--face-x", rarity.x || "0px");
+        document.documentElement.style.setProperty("--face-y", rarity.y || "0px");
+        document.documentElement.style.setProperty("--face-scale", rarity.scale || "1");
+      }
+    }
+
+    function clearTimers() {
+      var i = 0;
+
+      while (i < timers.length) {
+        clearTimeout(timers[i]);
+        i = i + 1;
+      }
+
+      timers = [];
+    }
+
+    function reset() {
+      clearTimers();
+      isAnimating = false;
+      stage.className = "stage";
+      setInitialRarity(initialRaritySelect.value);
+      setFinalRarity(finalRaritySelect.value);
+      void stage.offsetWidth;
+    }
+
+    function summon() {
+      if (!isAnimating) {
+        reset();
+        isAnimating = true;
+        stage.classList.add("charging");
+
+        timers.push(setTimeout(function () { stage.classList.add("opening"); }, 950));
+        timers.push(setTimeout(function () { stage.classList.add("breaking"); }, 2350));
+        timers.push(setTimeout(function () { stage.classList.add("revealed"); }, 2800));
+        timers.push(setTimeout(function () { isAnimating = false; }, 5600));
+      }
+    }
+
+    createPieces();
+    setInitialRarity(initialRaritySelect.value);
+    setFinalRarity(finalRaritySelect.value);
+
+    btnSummon.addEventListener("click", summon);
+    btnReset.addEventListener("click", reset);
+
+    initialRaritySelect.addEventListener("change", function () {
+      reset();
+    });
+
+    finalRaritySelect.addEventListener("change", function () {
+      setFinalRarity(finalRaritySelect.value);
+    });
+  </script>
+</body>
+</html>
