@@ -1,8 +1,6 @@
 package interfaz;
 
 import invocaciones.Invocacion;
-import logica.Combate;
-import logica.Gacha;
 import logica.Main;
 import logica.Tarjetas;
 
@@ -23,7 +21,8 @@ public class NivelCampana {
     private JButton buttonNivel9;
     private JButton buttonNivel10;
     public JPanel panelPisoCampana;
-    int nivelCampana;
+
+    private final int piso;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("nivelCampana");
@@ -34,166 +33,26 @@ public class NivelCampana {
     }
 
     public NivelCampana(int piso) {
-        Gacha gacha = new Gacha();
-        if (Main.pisoCampana == piso) {
-            if (Main.nivelCampana < 2) {
-                nivelCampana = 1;
-                buttonNivel2.setEnabled(false);
-            }
-            if (Main.nivelCampana < 3) {
-                buttonNivel3.setEnabled(false);
-                nivelCampana = 2;
-            }
-            if (Main.nivelCampana < 3) {
-                buttonNivel3.setEnabled(false);
-                nivelCampana = 3;
-            }
-            if (Main.nivelCampana < 4) {
-                buttonNivel4.setEnabled(false);
-            }
-            if (Main.nivelCampana < 5) {
-                buttonNivel5.setEnabled(false);
-                nivelCampana = 4;
-            }
-            if (Main.nivelCampana < 6) {
-                nivelCampana = 5;
-                buttonNivel6.setEnabled(false);
-            }
-            if (Main.nivelCampana < 7) {
-                nivelCampana = 6;
-                buttonNivel7.setEnabled(false);
-            }
-            if (Main.nivelCampana < 8) {
-                nivelCampana = 7;
-                buttonNivel8.setEnabled(false);
-            }
-            if (Main.nivelCampana < 9) {
-                nivelCampana = 8;
-                buttonNivel9.setEnabled(false);
-            }
-            if (Main.nivelCampana < 10) {
-                nivelCampana = 9;
-                buttonNivel10.setEnabled(false);
-            }
-            if (Main.nivelCampana >= 10) {
-                nivelCampana = 1;
-            }
-        }
-            buttonNivel1.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Combate combate = new Combate();
-                    Invocacion enemigo = combate.crearEnemigoCampana(piso, nivelCampana, );
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 1, piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
+        this.piso = piso;
 
-                }
-            });
+        configurarBotonesNivel(buttonNivel1, 1);
+        configurarBotonesNivel(buttonNivel2, 2);
+        configurarBotonesNivel(buttonNivel3, 3);
+        configurarBotonesNivel(buttonNivel4, 4);
+        configurarBotonesNivel(buttonNivel5, 5);
+        configurarBotonesNivel(buttonNivel6, 6);
+        configurarBotonesNivel(buttonNivel7, 7);
+        configurarBotonesNivel(buttonNivel8, 8);
+        configurarBotonesNivel(buttonNivel9, 9);
+        configurarBotonesNivel(buttonNivel10, 10);
 
-            buttonNivel2.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Comun");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 2, piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel3.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Comun");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 3, piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel4.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Natural");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 4, piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel5.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Natural");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false,5 ,piso ).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel6.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Natural");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 6, piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel7.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Raro");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false, 7,piso ).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel8.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Raro");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false,8 , piso).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel9.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Raro");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false,9 ,piso ).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
-
-            buttonNivel10.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Invocacion enemigo = gacha.crearInvocacion((int) (piso * 5), "Unico");
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
-                    frame.setContentPane(new PanelCombate(enemigo, false,10 ,piso ).panelCombate);
-                    frame.revalidate();
-                    frame.repaint();
-                }
-            });
         buttonVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tarjetas.saberInvocacionEquipada().setVida(Tarjetas.saberInvocacionEquipada().getVidaMaxima());
+                Invocacion equipada = Tarjetas.saberInvocacionEquipada();
+                if (equipada != null) {
+                    equipada.setVida(equipada.getVidaMaxima());
+                }
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
                 frame.setContentPane(new PisoCampana().panelMenuCampana);
                 frame.revalidate();
@@ -202,8 +61,38 @@ public class NivelCampana {
         });
     }
 
+    private void configurarBotonesNivel(JButton boton, int nivel) {
+        boton.setEnabled(puedeJugarNivel(nivel));
 
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iniciarCombateCampana(nivel);
+            }
+        });
+    }
 
+    private boolean puedeJugarNivel(int nivel) {
+        boolean puedeJugar;
 
+        if (piso > Main.pisoCampana) {
+            puedeJugar = false;
+        } else if (piso < Main.pisoCampana) {
+            puedeJugar = true;
+        } else {
+            // Mismo piso maximo: solo niveles ya alcanzados o el actual, no superiores
+            puedeJugar = nivel <= Main.nivelCampana;
+        }
+
+        return puedeJugar;
+    }
+
+    private void iniciarCombateCampana(int nivel) {
+        if (puedeJugarNivel(nivel) && Tarjetas.puedeEntrarEnCombate(panelPisoCampana)) {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelPisoCampana);
+            frame.setContentPane(new PanelCombate(true, piso, nivel).panelCombate);
+            frame.revalidate();
+            frame.repaint();
+        }
+    }
 }
-

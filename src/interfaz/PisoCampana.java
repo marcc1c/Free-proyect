@@ -24,18 +24,11 @@ public class PisoCampana {
     }
 
     public PisoCampana() {
-        if (Main.pisoCampana < 2) {
-            buttonPiso2.setEnabled(false);
-        }
-        if (Main.pisoCampana < 3) {
-            buttonPiso3.setEnabled(false);
-        }
-        if (Main.pisoCampana < 4) {
-            buttonPiso4.setEnabled(false);
-        }
-        if (Main.pisoCampana < 5) {
-            buttonPiso5.setEnabled(false);
-        }
+        buttonPiso1.setEnabled(puedeAbrirPiso(1));
+        buttonPiso2.setEnabled(puedeAbrirPiso(2));
+        buttonPiso3.setEnabled(puedeAbrirPiso(3));
+        buttonPiso4.setEnabled(puedeAbrirPiso(4));
+        buttonPiso5.setEnabled(puedeAbrirPiso(5));
 
         buttonPiso1.addActionListener(new ActionListener() {
             @Override
@@ -43,6 +36,7 @@ public class PisoCampana {
                 abrirNiveles(1);
             }
         });
+
         buttonPiso2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,17 +72,24 @@ public class PisoCampana {
                 frame.setContentPane(new MenuCampoBatalla().panelCampoBatalla);
                 frame.revalidate();
                 frame.repaint();
+
             }
         });
-
     }
+
+    private boolean puedeAbrirPiso(int piso) {
+        boolean puedeAbrir = piso <= Main.pisoCampana;
+        return puedeAbrir;
+    }
+
     private void abrirNiveles(int piso) {
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelMenuCampana);
+        if (puedeAbrirPiso(piso)) {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelMenuCampana);
+            NivelCampana nivelCampana = new NivelCampana(piso);
 
-        NivelCampana nivelCampana = new NivelCampana(piso);
-
-        frame.setContentPane(nivelCampana.panelPisoCampana);
-        frame.revalidate();
-        frame.repaint();
+            frame.setContentPane(nivelCampana.panelPisoCampana);
+            frame.revalidate();
+            frame.repaint();
+        }
     }
 }

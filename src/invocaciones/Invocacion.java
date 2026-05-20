@@ -18,39 +18,27 @@ public abstract class Invocacion {
 
     public Invocacion(int id, int nivel, String raza, String rareza) {
         this.id = id;
+        inicializarStats(nivel, raza, rareza);
+    }
+
+    private void inicializarStats(int nivel, String raza, String rareza) {
         this.raza = raza;
         this.rareza = rareza;
 
         calcularMultiplicadores(raza);
         calcularStats(rareza);
-
         conversorNivelExp(nivel);
     }
 
-    public Invocacion(String rareza, String raza, double multiExperiencia, double multiDañoCritico,
-                      double multiProbCritico, double multiDefensa, double multiAtaque, double multiVida,
-                      double dañoCritico, double probCritico, double defensa, double ataque, double vidaMaxima,
-                      double vida, double experienciaMaxima, double experiencia, int ascension, int nivel, int id) {
-
-        this.rareza = rareza;
-        this.raza = raza;
-        this.multiExteriencia = multiExperiencia;
-        this.multiDañoCritico = multiDañoCritico;
-        this.multiProbCritico = multiProbCritico;
-        this.multiDefensa = multiDefensa;
-        this.multiAtaque = multiAtaque;
-        this.multiVida = multiVida;
-        this.dañoCritico = dañoCritico;
-        this.probCritico = probCritico;
-        this.defensa = defensa;
-        this.ataque = ataque;
-        this.vidaMaxima = vidaMaxima;
-        this.vida = vida;
-        this.experienciaMaxima = experienciaMaxima;
-        this.experiencia = experiencia;
+    public void restaurarDesdePartida(int idEnPartida, int ascension, int nivel, String raza, String rareza,
+                                      double experiencia, double vida) {
+        this.id = idEnPartida;
         this.ascension = ascension;
-        this.nivel = nivel;
-        this.id = id;
+
+        inicializarStats(nivel, raza, rareza);
+
+        this.experiencia = experiencia;
+        this.vida = vida;
     }
 
     private void asignarStats(double vida, double ataque, double defensa, double probCritico, double dañoCritico) {
@@ -127,9 +115,11 @@ public abstract class Invocacion {
                 asignarMultiplicadores(1, 1, 1, 1, 1);
                 break;
         }
+
+        this.multiExteriencia = 1;
     }
 
-    public boolean subirExperiencia(double experienciaRecibida) {
+    public void subirExperiencia(double experienciaRecibida) {
         boolean subido = false;
 
         this.experiencia += experienciaRecibida;
@@ -140,7 +130,6 @@ public abstract class Invocacion {
             subido = true;
         }
 
-        return subido;
     }
 
     private void subirNivel() {
@@ -240,6 +229,38 @@ public abstract class Invocacion {
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getAscension() {
+        return ascension;
+    }
+
+    public void setAscension(int ascension) {
+        this.ascension = ascension;
+    }
+
+    public double getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(double experiencia) {
+        this.experiencia = experiencia;
+    }
+
     public double getExperienciaMaxima() {
         return experienciaMaxima;
     }
@@ -248,36 +269,76 @@ public abstract class Invocacion {
         this.experienciaMaxima = experienciaMaxima;
     }
 
+    public double getVida() {
+        return vida;
+    }
+
+    public void setVida(double vida) {
+        this.vida = vida;
+    }
+
+    public double getVidaMaxima() {
+        return vidaMaxima;
+    }
+
+    public void setVidaMaxima(double vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+
+    public double getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(double ataque) {
+        this.ataque = ataque;
+    }
+
+    public double getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(double defensa) {
+        this.defensa = defensa;
+    }
+
+    public double getProbCritico() {
+        return probCritico;
+    }
+
+    public void setProbCritico(double probCritico) {
+        this.probCritico = probCritico;
+    }
+
+    public double getDañoCritico() {
+        return dañoCritico;
+    }
+
+    public void setDañoCritico(double dañoCritico) {
+        this.dañoCritico = dañoCritico;
+    }
+
+    public double getMultiVida() {
+        return multiVida;
+    }
+
+    public void setMultiVida(double multiVida) {
+        this.multiVida = multiVida;
+    }
+
+    public double getMultiAtaque() {
+        return multiAtaque;
+    }
+
+    public void setMultiAtaque(double multiAtaque) {
+        this.multiAtaque = multiAtaque;
+    }
+
     public boolean isEquipado() {
         return equipado;
     }
 
     public void setEquipado(boolean equipado) {
         this.equipado = equipado;
-    }
-
-    public String getRaza() {
-        return raza;
-    }
-
-    public void setRaza(String raza) {
-        this.raza = raza;
-    }
-
-    public String getRareza() {
-        return rareza;
-    }
-
-    public void setRareza(String rareza) {
-        this.rareza = rareza;
-    }
-
-    public double getMultiExteriencia() {
-        return multiExteriencia;
-    }
-
-    public void setMultiExteriencia(double multiExteriencia) {
-        this.multiExteriencia = multiExteriencia;
     }
 
     public double getMultiDañoCritico() {
@@ -304,99 +365,27 @@ public abstract class Invocacion {
         this.multiDefensa = multiDefensa;
     }
 
-    public double getMultiVida() {
-        return multiVida;
+    public String getRaza() {
+        return raza;
     }
 
-    public void setMultiVida(double multiVida) {
-        this.multiVida = multiVida;
+    public void setRaza(String raza) {
+        this.raza = raza;
     }
 
-    public double getMultiAtaque() {
-        return multiAtaque;
+    public String getRareza() {
+        return rareza;
     }
 
-    public void setMultiAtaque(double multiAtaque) {
-        this.multiAtaque = multiAtaque;
+    public void setRareza(String rareza) {
+        this.rareza = rareza;
     }
 
-    public double getDañoCritico() {
-        return dañoCritico;
+    public double getMultiExteriencia() {
+        return multiExteriencia;
     }
 
-    public void setDañoCritico(double dañoCritico) {
-        this.dañoCritico = dañoCritico;
-    }
-
-    public double getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(double defensa) {
-        this.defensa = defensa;
-    }
-
-    public double getProbCritico() {
-        return probCritico;
-    }
-
-    public void setProbCritico(double probCritico) {
-        this.probCritico = probCritico;
-    }
-
-    public double getAtaque() {
-        return ataque;
-    }
-
-    public void setAtaque(double ataque) {
-        this.ataque = ataque;
-    }
-
-    public double getVidaMaxima() {
-        return vidaMaxima;
-    }
-
-    public void setVidaMaxima(double vidaMaxima) {
-        this.vidaMaxima = vidaMaxima;
-    }
-
-    public double getVida() {
-        return vida;
-    }
-
-    public void setVida(double vida) {
-        this.vida = vida;
-    }
-
-    public double getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(double experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public int getAscension() {
-        return ascension;
-    }
-
-    public void setAscension(int ascension) {
-        this.ascension = ascension;
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setMultiExteriencia(double multiExteriencia) {
+        this.multiExteriencia = multiExteriencia;
     }
 }

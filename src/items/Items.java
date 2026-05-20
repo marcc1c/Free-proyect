@@ -15,7 +15,8 @@ public class Items {
     }
 
     public int getId() {
-        return id;
+        int resultado = id;
+        return resultado;
     }
 
     public void setId(int id) {
@@ -23,7 +24,8 @@ public class Items {
     }
 
     public String getNombre() {
-        return nombre;
+        String resultado = nombre;
+        return resultado;
     }
 
     public void setNombre(String nombre) {
@@ -31,7 +33,8 @@ public class Items {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        String resultado = descripcion;
+        return resultado;
     }
 
     public void setDescripcion(String descripcion) {
@@ -39,7 +42,8 @@ public class Items {
     }
 
     public String getRareza() {
-        return rareza;
+        String resultado = rareza;
+        return resultado;
     }
 
     public void setRareza(String rareza) {
@@ -47,7 +51,8 @@ public class Items {
     }
 
     public int getCantidad() {
-        return cantidad;
+        int resultado = cantidad;
+        return resultado;
     }
 
     public void setCantidad(int cantidad) {
@@ -56,12 +61,13 @@ public class Items {
 
     @Override
     public String toString() {
-        return "Items{" +
+        String resultado = "Items{" +
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", rareza='" + rareza + '\'' +
                 ", id=" + id +
                 ", cantidad=" + cantidad +
                 '}';
+        return resultado;
     }
 }

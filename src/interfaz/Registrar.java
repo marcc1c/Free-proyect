@@ -1,7 +1,7 @@
 package interfaz;
 
-import cargar.ConexionBD;
-import cargar.ConexionBD.*;
+import cargar.CargarDatos;
+import cargar.DescargarDatos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -38,11 +38,13 @@ public class Registrar {
         buttonRegistrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConexionBD conexionBD = new ConexionBD();
-                if (conexionBD.existeUsuario(textField1.getText())) {
+                CargarDatos cargarDatos = new CargarDatos();
+                DescargarDatos descargarDatos = new DescargarDatos();
+
+                if (cargarDatos.existeUsuario(textField1.getText())) {
                     labelAviso.setText("Ya existe este usuario");
                 } else {
-                    conexionBD.registraUsuario(textField1.getText(), passwordField1.getPassword());
+                    descargarDatos.registraUsuario(textField1.getText(), passwordField1.getPassword());
                     labelAviso.setText("Usuario registrado con exito");
                 }
             }

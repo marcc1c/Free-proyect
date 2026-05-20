@@ -45,56 +45,98 @@ public class Gacha {
     }
 
     public Invocacion crearInvocacion(int suerte, int nivel) {
-        String raza = determinarRaza();
-        String rareza = determinarRareza(suerte);
-
-        return crearInvocacion(nivel, raza, rareza);
-    }
-
-
-    public Invocacion crearInvocacion(int nivel, String raza, String rareza) {
-        Invocacion invocacion = null;
-
-
-        switch (raza) {
-            case "Ave":
-                invocacion = new Ave(0, nivel, raza, rareza);
-                break;
-
-            case "Felino":
-                invocacion = new Felino(0, nivel, raza, rareza);
-                break;
-
-            case "Acuatico":
-                invocacion = new Acuatico(0, nivel, raza, rareza);
-                break;
-
-            case "Insecto":
-                invocacion = new Insecto(0, nivel, raza, rareza);
-                break;
-        }
+        Invocacion invocacion = crearInvocacion(nivel, determinarRareza(suerte));
         return invocacion;
     }
 
     public Invocacion crearInvocacion(int nivel, String rareza) {
-        Invocacion invocacion = null;
         String raza = determinarRaza();
+        Invocacion invocacion = new Felino(0, nivel, rareza);
 
         switch (raza) {
             case "Ave":
-                invocacion = new Ave(0, nivel, raza, rareza);
+                invocacion = new Ave(0, nivel, rareza);
                 break;
             case "Felino":
-                invocacion = new Felino(0, nivel, raza, rareza);
+                invocacion = new Felino(0, nivel, rareza);
                 break;
             case "Acuatico":
-                invocacion = new Acuatico(0, nivel, raza, rareza);
+                invocacion = new Acuatico(0, nivel, rareza);
                 break;
             case "Insecto":
-                invocacion = new Insecto(0, nivel, raza, rareza);
+                invocacion = new Insecto(0, nivel, rareza);
+                break;
+            default:
                 break;
         }
+
         return invocacion;
+    }
+
+    public String determinarRarezaCampana(int piso, int nivelDelPiso) {
+        String[][] rarezasPorPiso = {
+                {"Comun", "Comun", "Natural"},
+                {"Natural", "Natural", "Raro"},
+                {"Raro", "Raro", "Unico"},
+                {"Unico", "Unico", "Extinto"},
+                {"Extinto", "Extinto", "Primordial"},
+                {"Primordial", "Primordial", "Primordial"}
+        };
+
+        int indicePiso = piso - 1;
+        if (indicePiso < 0) {
+            indicePiso = 0;
+        }
+        if (indicePiso >= rarezasPorPiso.length) {
+            indicePiso = rarezasPorPiso.length - 1;
+        }
+
+        int indiceNivel;
+        if (nivelDelPiso <= 3) {
+            indiceNivel = 0;
+        } else if (nivelDelPiso <= 7) {
+            indiceNivel = 1;
+        } else {
+            indiceNivel = 2;
+        }
+
+        String rareza = rarezasPorPiso[indicePiso][indiceNivel];
+        return rareza;
+    }
+
+    public Invocacion crearEnemigoCampana(int piso, int nivelDelPiso, String rareza) {
+        int[][] rangosPorPiso = {
+                {1, 3},
+                {5, 7},
+                {10, 13},
+                {15, 17},
+                {22, 22},
+                {23, 25}
+        };
+
+        int nivelDeLaInvocacion = 1;
+
+        int indicePiso = piso - 1;
+        if (indicePiso < 0) {
+            indicePiso = 0;
+        }
+        if (indicePiso >= rangosPorPiso.length) {
+            indicePiso = rangosPorPiso.length - 1;
+        }
+
+        int nivelMinimo = rangosPorPiso[indicePiso][0];
+        int nivelMaximo = rangosPorPiso[indicePiso][1];
+        int nivelMedio = (int) Math.round((nivelMinimo + nivelMaximo) / 2.0);
+
+        if (nivelDelPiso <= 3) {
+            nivelDeLaInvocacion = nivelMinimo;
+        } else if (nivelDelPiso <= 7) {
+            nivelDeLaInvocacion = nivelMedio;
+        } else {
+            nivelDeLaInvocacion = nivelMaximo;
+        }
+
+        return crearInvocacion(nivelDeLaInvocacion, rareza);
     }
 }
 

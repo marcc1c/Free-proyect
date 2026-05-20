@@ -38,7 +38,6 @@ public class Combate {
         if (invocacion2.getVida() < 0) {
             invocacion2.setVida(0);
         }
-        System.out.println("Vida: " + invocacion2.getVida());
 
         if (invocacion2.getVida() <= 0) {
             invocacion2ConVida = false;
@@ -61,7 +60,7 @@ public class Combate {
             case "Raro":
                 multiplicadorPorRareza = 1.5;
                 break;
-            case "Único":
+            case "Unico":
                 multiplicadorPorRareza = 1.7;
                 break;
             case "Extinto":
@@ -71,7 +70,8 @@ public class Combate {
                 multiplicadorPorRareza = 2.5;
                 break;
         }
-        return invocacion.getNivel() * multiplicadorPorRareza;
+        double experiencia = invocacion.getNivel() * multiplicadorPorRareza;
+        return experiencia;
     }
 
     public void calcularDrop(Invocacion invocacion, JTextPane logsCombate) {
@@ -104,39 +104,6 @@ public class Combate {
                 logsCombate.setText(logsCombate.getText() + "\n");
             }
         }
-    }
-
-    public Invocacion crearEnemigoCampana(int piso, int nivelDelPiso) {
-        Gacha gacha = new Gacha();
-
-
-        int[][] rangosPorPiso = {
-                {1, 3},
-                {5, 7},
-                {10, 12},
-                {13, 15},
-                {16, 18},
-                {23, 25}
-        };
-
-        String [] rarezas = {"Comun", "Natural", "Raro", "Unico", "Extinto", "Primordial"};
-
-        int nivelDeLaInvocacion = 1;
-
-        int nivelMinimo = rangosPorPiso[piso - 1][0];
-        int nivelMaximo = rangosPorPiso[piso - 1][1];
-        int nivelMedio = nivelMaximo - nivelMinimo + nivelMinimo;
-
-        if (nivelDelPiso <= 3) {
-            nivelDeLaInvocacion = nivelMinimo;
-        } else if (nivelDelPiso <= 7) {
-            nivelDeLaInvocacion = nivelMedio;
-        } else {
-            nivelDeLaInvocacion = nivelMaximo;
-        }
-
-        return gacha.crearInvocacion(nivelDeLaInvocacion, rareza);
-
     }
 }
 

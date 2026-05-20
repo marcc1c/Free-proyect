@@ -1,12 +1,6 @@
 CREATE DATABASE IF NOT EXISTS bbdd_call_the_best
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
 
 USE bbdd_call_the_best;
-
-DROP TRIGGER IF EXISTS crear_datos_iniciales_usuario;
-DROP TRIGGER IF EXISTS crear_item_para_usuarios_existentes;
-DROP TRIGGER IF EXISTS crear_logro_para_usuarios_existentes;
 
 DROP TABLE IF EXISTS LOOT_CALIDAD;
 DROP TABLE IF EXISTS LOGRO_USUARIO;
@@ -20,13 +14,13 @@ DROP TABLE IF EXISTS USUARIO;
 
 CREATE TABLE USUARIO (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
     contrasena_hash VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE ITEM (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
     rareza VARCHAR(50) NOT NULL
 );
@@ -36,14 +30,14 @@ CREATE TABLE INVOCACION (
     id_usuario INT NOT NULL,
     id_en_partida INT NOT NULL,
 
-    nivel INT NOT NULL DEFAULT 1,
-    ascension INT NOT NULL DEFAULT 0,
+    nivel INT NOT NULL,
+    ascension INT NOT NULL,
 
     raza VARCHAR(50) NOT NULL,
     rareza VARCHAR(50) NOT NULL,
 
-    experiencia DOUBLE NOT NULL DEFAULT 0,
-    experiencia_maxima DOUBLE NOT NULL DEFAULT 10,
+    experiencia DOUBLE NOT NULL,
+    experiencia_maxima DOUBLE NOT NULL,
 
     vida DOUBLE NOT NULL,
     vida_maxima DOUBLE NOT NULL,
@@ -53,14 +47,12 @@ CREATE TABLE INVOCACION (
     prob_critico DOUBLE NOT NULL,
     dano_critico DOUBLE NOT NULL,
 
-    multi_vida DOUBLE NOT NULL DEFAULT 1,
-    multi_ataque DOUBLE NOT NULL DEFAULT 1,
-    multi_defensa DOUBLE NOT NULL DEFAULT 1,
-    multi_prob_critico DOUBLE NOT NULL DEFAULT 1,
-    multi_dano_critico DOUBLE NOT NULL DEFAULT 1,
-    multi_experiencia DOUBLE NOT NULL DEFAULT 1,
-
-    UNIQUE (id_usuario, id_en_partida),
+    multi_vida DOUBLE NOT NULL,
+    multi_ataque DOUBLE NOT NULL,
+    multi_defensa DOUBLE NOT NULL,
+    multi_prob_critico DOUBLE NOT NULL,
+    multi_dano_critico DOUBLE NOT NULL,
+    multi_experiencia DOUBLE NOT NULL,
 
     FOREIGN KEY (id_usuario) REFERENCES USUARIO(id)
         ON DELETE CASCADE
@@ -70,7 +62,7 @@ CREATE TABLE INVOCACION (
 CREATE TABLE ITEM_USUARIO (
     id_usuario INT NOT NULL,
     id_item INT NOT NULL,
-    cantidad INT NOT NULL DEFAULT 0,
+    cantidad INT NOT NULL,
 
     PRIMARY KEY (id_usuario, id_item),
 
@@ -80,14 +72,12 @@ CREATE TABLE ITEM_USUARIO (
 
     FOREIGN KEY (id_item) REFERENCES ITEM(id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
-
-    CHECK (cantidad >= 0)
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE LOGRO (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(255) NOT NULL
 );
 
@@ -96,7 +86,7 @@ CREATE TABLE LOGRO_META (
     id_logro INT NOT NULL,
     valor_meta INT NOT NULL,
     id_item_recompensa INT NULL,
-    cantidad_recompensa INT NOT NULL DEFAULT 0,
+    cantidad_recompensa INT NOT NULL,
 
     FOREIGN KEY (id_logro) REFERENCES LOGRO(id)
         ON DELETE CASCADE
@@ -104,16 +94,13 @@ CREATE TABLE LOGRO_META (
 
     FOREIGN KEY (id_item_recompensa) REFERENCES ITEM(id)
         ON DELETE SET NULL
-        ON UPDATE CASCADE,
-
-    CHECK (valor_meta >= 0),
-    CHECK (cantidad_recompensa >= 0)
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE LOGRO_USUARIO (
     id_usuario INT NOT NULL,
     id_logro INT NOT NULL,
-    progreso INT NOT NULL DEFAULT 0,
+    progreso INT NOT NULL,
 
     PRIMARY KEY (id_usuario, id_logro),
 
@@ -123,16 +110,14 @@ CREATE TABLE LOGRO_USUARIO (
 
     FOREIGN KEY (id_logro) REFERENCES LOGRO(id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
-
-    CHECK (progreso >= 0)
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE PROGRESO_COMBATE (
     id_usuario INT PRIMARY KEY,
-    piso_torre_infinita INT NOT NULL DEFAULT 1,
-    nivel_campana INT NOT NULL DEFAULT 1,
-    piso_campana INT NOT NULL DEFAULT 1,
+    piso_torre_infinita INT NOT NULL,
+    nivel_campana INT NOT NULL,
+    piso_campana INT NOT NULL,
 
     FOREIGN KEY (id_usuario) REFERENCES USUARIO(id)
         ON DELETE CASCADE
@@ -147,91 +132,10 @@ CREATE TABLE LOOT_CALIDAD (
     cantidad_minima INT NOT NULL,
     cantidad_maxima INT NOT NULL,
 
-    UNIQUE (id_item, calidad_enemigo),
-
     FOREIGN KEY (id_item) REFERENCES ITEM(id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
-
-    CHECK (porcentaje >= 0 AND porcentaje <= 100),
-    CHECK (cantidad_minima >= 0),
-    CHECK (cantidad_maxima >= cantidad_minima)
+        ON UPDATE CASCADE
 );
-
-DELIMITER //
-
-CREATE TRIGGER crear_datos_iniciales_usuario
-AFTER INSERT ON USUARIO
-FOR EACH ROW
-BEGIN
-    INSERT INTO PROGRESO_COMBATE (
-        id_usuario,
-        piso_torre_infinita,
-        nivel_campana,
-        piso_campana
-    ) VALUES (
-        NEW.id,
-        1,
-        1,
-        1
-    );
-
-    INSERT IGNORE INTO ITEM_USUARIO (
-        id_usuario,
-        id_item,
-        cantidad
-    )
-    SELECT
-        NEW.id,
-        ITEM.id,
-        0
-    FROM ITEM;
-
-    INSERT IGNORE INTO LOGRO_USUARIO (
-        id_usuario,
-        id_logro,
-        progreso
-    )
-    SELECT
-        NEW.id,
-        LOGRO.id,
-        0
-    FROM LOGRO;
-END//
-
-CREATE TRIGGER crear_item_para_usuarios_existentes
-AFTER INSERT ON ITEM
-FOR EACH ROW
-BEGIN
-    INSERT IGNORE INTO ITEM_USUARIO (
-        id_usuario,
-        id_item,
-        cantidad
-    )
-    SELECT
-        USUARIO.id,
-        NEW.id,
-        0
-    FROM USUARIO;
-END//
-
-CREATE TRIGGER crear_logro_para_usuarios_existentes
-AFTER INSERT ON LOGRO
-FOR EACH ROW
-BEGIN
-    INSERT IGNORE INTO LOGRO_USUARIO (
-        id_usuario,
-        id_logro,
-        progreso
-    )
-    SELECT
-        USUARIO.id,
-        NEW.id,
-        0
-    FROM USUARIO;
-END//
-
-DELIMITER ;
 
 INSERT INTO ITEM (nombre, descripcion, rareza) VALUES
 ('Oro', 'Moneda basica del juego; sirve para compras, mejoras, costes de menu y progresion general.', 'Comun'),
@@ -267,7 +171,6 @@ INSERT INTO LOOT_CALIDAD (
     cantidad_maxima
 ) VALUES
 
--- ORO 100%
 ((SELECT id FROM ITEM WHERE nombre = 'Oro'), 'Comun', 100, 20, 30),
 ((SELECT id FROM ITEM WHERE nombre = 'Oro'), 'Natural', 100, 30, 40),
 ((SELECT id FROM ITEM WHERE nombre = 'Oro'), 'Raro', 100, 40, 50),
@@ -275,7 +178,6 @@ INSERT INTO LOOT_CALIDAD (
 ((SELECT id FROM ITEM WHERE nombre = 'Oro'), 'Extinto', 100, 60, 70),
 ((SELECT id FROM ITEM WHERE nombre = 'Oro'), 'Primordial', 100, 70, 80),
 
--- POLVO DE SU PROPIA CALIDAD 100%
 ((SELECT id FROM ITEM WHERE nombre = 'Polvo Comun'), 'Comun', 100, 20, 40),
 ((SELECT id FROM ITEM WHERE nombre = 'Polvo Natural'), 'Natural', 100, 20, 40),
 ((SELECT id FROM ITEM WHERE nombre = 'Polvo Raro'), 'Raro', 100, 20, 40),
@@ -283,7 +185,6 @@ INSERT INTO LOOT_CALIDAD (
 ((SELECT id FROM ITEM WHERE nombre = 'Polvo Extinto'), 'Extinto', 100, 20, 40),
 ((SELECT id FROM ITEM WHERE nombre = 'Polvo Primordial'), 'Primordial', 100, 20, 40),
 
--- ORBE DE SU PROPIA CALIDAD 10%
 ((SELECT id FROM ITEM WHERE nombre = 'Orbe Comun'), 'Comun', 10, 1, 1),
 ((SELECT id FROM ITEM WHERE nombre = 'Orbe Natural'), 'Natural', 10, 1, 1),
 ((SELECT id FROM ITEM WHERE nombre = 'Orbe Raro'), 'Raro', 10, 1, 1),
@@ -291,14 +192,12 @@ INSERT INTO LOOT_CALIDAD (
 ((SELECT id FROM ITEM WHERE nombre = 'Orbe Extinto'), 'Extinto', 10, 1, 1),
 ((SELECT id FROM ITEM WHERE nombre = 'Orbe Primordial'), 'Primordial', 10, 1, 1),
 
--- EXPERIENCIA
 ((SELECT id FROM ITEM WHERE nombre = 'Frasco de Experiencia'), 'Comun', 10, 1, 1),
 ((SELECT id FROM ITEM WHERE nombre = 'Frasco de Experiencia'), 'Natural', 10, 1, 1),
 
 ((SELECT id FROM ITEM WHERE nombre = 'Cristal de Experiencia'), 'Raro', 5, 1, 2),
 ((SELECT id FROM ITEM WHERE nombre = 'Cristal de Experiencia'), 'Unico', 5, 1, 2),
 
--- FRAGMENTO DE ASCENDENCIA 5%
 ((SELECT id FROM ITEM WHERE nombre = 'Fragmento de Ascendencia'), 'Comun', 5, 1, 2),
 ((SELECT id FROM ITEM WHERE nombre = 'Fragmento de Ascendencia'), 'Natural', 5, 2, 3),
 ((SELECT id FROM ITEM WHERE nombre = 'Fragmento de Ascendencia'), 'Raro', 5, 3, 4),
@@ -306,26 +205,33 @@ INSERT INTO LOOT_CALIDAD (
 ((SELECT id FROM ITEM WHERE nombre = 'Fragmento de Ascendencia'), 'Extinto', 5, 5, 6),
 ((SELECT id FROM ITEM WHERE nombre = 'Fragmento de Ascendencia'), 'Primordial', 5, 6, 7),
 
--- PIEDRA DE ASCENDENCIA 5%, SOLO DESDE UNICO
 ((SELECT id FROM ITEM WHERE nombre = 'Piedra de Ascendencia'), 'Unico', 5, 1, 2),
 ((SELECT id FROM ITEM WHERE nombre = 'Piedra de Ascendencia'), 'Extinto', 5, 2, 3),
 ((SELECT id FROM ITEM WHERE nombre = 'Piedra de Ascendencia'), 'Primordial', 5, 3, 4),
 
--- NUCLEO DE ASCENDENCIA 5%, SOLO EXTINTO Y PRIMORDIAL
 ((SELECT id FROM ITEM WHERE nombre = 'Nucleo de Ascendencia'), 'Extinto', 5, 1, 2),
 ((SELECT id FROM ITEM WHERE nombre = 'Nucleo de Ascendencia'), 'Primordial', 5, 1, 3),
 
--- NUCLEO DE TRASCENDENCIA 0.5%, SOLO PRIMORDIAL
 ((SELECT id FROM ITEM WHERE nombre = 'Nucleo de Trascendencia'), 'Primordial', 0.5, 1, 1);
-
--- Usuario de prueba opcional.
--- Al crearlo, se genera automaticamente:
--- 1. PROGRESO_COMBATE
--- 2. ITEM_USUARIO con todos los objetos a cantidad 0
--- 3. LOGRO_USUARIO con todos los logros existentes a progreso 0
 
 INSERT INTO USUARIO (nombre, contrasena_hash)
 VALUES ('test', '1234');
+
+INSERT INTO PROGRESO_COMBATE (
+    id_usuario,
+    piso_torre_infinita,
+    nivel_campana,
+    piso_campana
+) VALUES (
+    1,
+    1,
+    1,
+    1
+);
+
+INSERT INTO ITEM_USUARIO (id_usuario, id_item, cantidad)
+SELECT 1, ITEM.id, 0
+FROM ITEM;
 
 INSERT INTO INVOCACION (
     id_usuario,
@@ -370,10 +276,3 @@ INSERT INTO INVOCACION (
     1.4,
     1.0
 );
-
-SELECT * FROM USUARIO;
-SELECT * FROM PROGRESO_COMBATE;
-SELECT * FROM ITEM;
-SELECT * FROM ITEM_USUARIO;
-SELECT * FROM LOOT_CALIDAD;
-SELECT * FROM INVOCACION;
