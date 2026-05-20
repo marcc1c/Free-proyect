@@ -16,21 +16,16 @@ public class IniciarSesion {
     private JLabel labelAviso;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("iniciarSesion");
-        frame.setContentPane(new IniciarSesion().panelIniciarSesion);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        Main.main(args);
     }
 
     public IniciarSesion() {
         buttonIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConexionBD conexionBD = new ConexionBD();
+                CargarDatos cargarDatos = new CargarDatos();
 
-                Main.idUsuario = conexionBD.iniciarSesion(textField1.getText(), passwordField1.getPassword());
+                Main.idUsuario = cargarDatos.iniciarSesion(textField1.getText(), passwordField1.getPassword());
                 if (Main.idUsuario == -1) {
                     labelAviso.setText("Usuario o contraseña incorrecta");
                     } else {

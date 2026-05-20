@@ -23,6 +23,21 @@ public class Tarjetas {
         return invocacionEquipada;
     }
 
+    public static boolean puedeEntrarEnCombate(Component parent) {
+        boolean puedeEntrar = saberInvocacionEquipada() != null;
+
+        if (!puedeEntrar) {
+            JOptionPane.showMessageDialog(
+                    parent,
+                    "No tienes ninguna invocacion equipada.",
+                    "Sin invocacion equipada",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+        return puedeEntrar;
+    }
+
     public static void equiparInvocacion(Invocacion invocacion) {
 
         for (Invocacion invo : Main.inventarioInvocaciones) {
@@ -223,6 +238,7 @@ public class Tarjetas {
             }
         });
 
+
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout());
         panelBotones.setBackground(new Color(10, 37, 56));
@@ -233,7 +249,8 @@ public class Tarjetas {
     }
 
     public static JPanel crearTarjetaInvocacion(Invocacion invocacion, JPanel panelContenedor) {
-        return crearTarjetaInvocacionInventario(invocacion, panelContenedor);
+        JPanel tarjeta = crearTarjetaInvocacionInventario(invocacion, panelContenedor);
+        return tarjeta;
     }
 
     public static JPanel crearTarjetaItem(Items item) {
@@ -307,10 +324,6 @@ public class Tarjetas {
                 color = Color.WHITE;
                 break;
 
-            case "Común":
-                color = Color.WHITE;
-                break;
-
             case "Natural":
                 color = Color.GREEN;
                 break;
@@ -320,10 +333,6 @@ public class Tarjetas {
                 break;
 
             case "Unico":
-                color = new Color(253, 207, 98);
-                break;
-
-            case "Único":
                 color = new Color(253, 207, 98);
                 break;
 

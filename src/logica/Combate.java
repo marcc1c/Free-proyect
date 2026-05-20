@@ -32,13 +32,12 @@ public class Combate {
         if (dañoReal < 0) {
             dañoReal = 0;
         }
-        logsCombate.setText(logsCombate.getText() + (int)dañoReal + " puntos de daño\n");
+        logsCombate.setText(logsCombate.getText() + (int) dañoReal + " puntos de daño\n");
 
         invocacion2.setVida(invocacion2.getVida() - dañoReal);
         if (invocacion2.getVida() < 0) {
             invocacion2.setVida(0);
         }
-        System.out.println("Vida: " + invocacion2.getVida());
 
         if (invocacion2.getVida() <= 0) {
             invocacion2ConVida = false;
@@ -46,7 +45,7 @@ public class Combate {
             if (!esEnemigo) {
                 calcularDrop(invocacion2, logsCombate);
             }
-        }   
+        }
 
         return invocacion2ConVida;
     }
@@ -61,7 +60,7 @@ public class Combate {
             case "Raro":
                 multiplicadorPorRareza = 1.5;
                 break;
-            case "Único":
+            case "Unico":
                 multiplicadorPorRareza = 1.7;
                 break;
             case "Extinto":
@@ -71,7 +70,8 @@ public class Combate {
                 multiplicadorPorRareza = 2.5;
                 break;
         }
-        return invocacion.getNivel() * multiplicadorPorRareza;
+        double experiencia = invocacion.getNivel() * multiplicadorPorRareza;
+        return experiencia;
     }
 
     public void calcularDrop(Invocacion invocacion, JTextPane logsCombate) {

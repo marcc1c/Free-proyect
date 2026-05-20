@@ -1,0 +1,7 @@
+El logo de la ventana va en:
+
+  src/resources/logo.png
+
+(No en esta carpeta "recursos". El codigo usa /resources/logo.png)
+
+Tamaño recomendado: 32x32 o 64x64 pixels.

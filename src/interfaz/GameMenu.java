@@ -1,6 +1,9 @@
 package interfaz;
 
-import logica.*;
+import cargar.DescargarDatos;
+import invocaciones.Invocacion;
+import logica.Gacha;
+import logica.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +23,6 @@ public class GameMenu {
 
     public GameMenu() {
 
-
         buttonInventario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,6 +32,7 @@ public class GameMenu {
                 frame.repaint();
             }
         });
+
         buttonCampoDeBatalla.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,16 +47,18 @@ public class GameMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gacha gacha = new Gacha();
-                Main.inventarioInvocaciones.add(gacha.crearInvocacion(Main.suerte, 1));
+                Invocacion nuevaInvocacion = gacha.crearInvocacion(Main.suerte, 1);
+                nuevaInvocacion.setId(Main.siguienteIdEnPartida());
+                Main.inventarioInvocaciones.add(nuevaInvocacion);
             }
         });
 
         buttonCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.inventarioInvocaciones.clear();
-                Main.pisoTorreInfinita = 0;
-                Main.catalogoItems.clear();
+                DescargarDatos descargarDatos = new DescargarDatos();
+                descargarDatos.guardarPartida(Main.idUsuario);
+                Main.limpiarDatosSesion();
 
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelGameMenu);
                 frame.setContentPane(new IniciarSesion().panelIniciarSesion);
@@ -61,14 +66,9 @@ public class GameMenu {
                 frame.repaint();
             }
         });
-
-
     }
 
-
-
     public static void main(String[] args) {
-
         JFrame frame = new JFrame("GameMenu");
         frame.setContentPane(new GameMenu().panelGameMenu);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

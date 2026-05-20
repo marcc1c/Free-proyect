@@ -1,7 +1,7 @@
 package interfaz;
 
-import logica.Combate;
 import logica.Main;
+import logica.Tarjetas;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,11 +27,23 @@ public class MenuCampoBatalla {
         buttonTorreInfinita.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (Tarjetas.puedeEntrarEnCombate(panelCampoBatalla)) {
+                    PanelCombate.esTorreInfinita = true;
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCampoBatalla);
+                    frame.setContentPane(new PanelCombate().panelCombate);
+                    frame.revalidate();
+                    frame.repaint();
+                }
+            }
+        });
+
+        buttonCampaña.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCampoBatalla);
-                frame.setContentPane(new PanelCombate().panelCombate);
+                frame.setContentPane(new PisoCampana().panelMenuCampana);
                 frame.revalidate();
                 frame.repaint();
-                PanelCombate.esTorreInfinita = true;
             }
         });
         buttonVolver.addActionListener(new ActionListener() {

@@ -65,7 +65,7 @@
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/CEP-MATI/Documents/GitHub/Free-proyect/src/interfaz",
+    "last_opened_file_path": "C:/Users/mmyzx/Documents/GitHub/Free-proyect/src/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,6 +80,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mmyzx\Documents\GitHub\Free-proyect\src\resources" />
       <recent name="C:\Users\CEP-MATI\Documents\GitHub\Free-proyect\src\interfaz" />
     </key>
   </component>

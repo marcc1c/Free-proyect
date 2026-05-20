@@ -13,7 +13,8 @@ public class LootEntry {
     }
 
     public int getCantidadMinima() {
-        return cantidadMinima;
+        int resultado = cantidadMinima;
+        return resultado;
     }
 
     public void setCantidadMinima(int cantidadMinima) {
@@ -21,7 +22,8 @@ public class LootEntry {
     }
 
     public int getCantidadMaxima() {
-        return cantidadMaxima;
+        int resultado = cantidadMaxima;
+        return resultado;
     }
 
     public void setCantidadMaxima(int cantidadMaxima) {
@@ -29,7 +31,8 @@ public class LootEntry {
     }
 
     public int getIdItem() {
-        return idItem;
+        int resultado = idItem;
+        return resultado;
     }
 
     public void setIdItem(int idItem) {
@@ -37,7 +40,8 @@ public class LootEntry {
     }
 
     public double getPorcentaje() {
-        return porcentaje;
+        double resultado = porcentaje;
+        return resultado;
     }
 
     public void setPorcentaje(double porcentaje) {
@@ -46,11 +50,12 @@ public class LootEntry {
 
     @Override
     public String toString() {
-        return "LootEntry{" +
+        String resultado = "LootEntry{" +
                 "cantidadMinima=" + cantidadMinima +
                 ", cantidadMaxima=" + cantidadMaxima +
                 ", idItem=" + idItem +
                 ", porcentaje=" + porcentaje +
                 '}';
+        return resultado;
     }
 }
